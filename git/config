@@ -1,0 +1,7 @@
+[user]
+	name = Colin Watson
+	email = 137962378+ceeewatt@users.noreply.github.com
+[core]
+	editor = /home/colin/apps/nvim/bin/nvim
+[init]
+	defaultBranch = master

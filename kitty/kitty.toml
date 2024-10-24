@@ -1,0 +1,6 @@
+[kitty]
+target = "/home/colin/.dotfiles/kitty/kitty.conf"
+link = "/home/colin/.config/kitty/kitty.conf"
+[theme]
+target = "/home/colin/.dotfiles/kitty/current-theme.conf"
+link = "/home/colin/.config/kitty/current-theme.conf"

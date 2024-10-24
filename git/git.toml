@@ -1,0 +1,3 @@
+[git_config]
+target = "/home/colin/.dotfiles/git/config"
+link = "/home/colin/.config/git/config"

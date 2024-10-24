@@ -1,0 +1,12 @@
+[bashrc]
+target = "/home/colin/.dotfiles/system/.bashrc"
+link = "/home/colin/.bashrc"
+[bash_aliases]
+target = "/home/colin/.dotfiles/system/.bash_aliases"
+link = "/home/colin/.bash_aliases"
+[profile]
+target = "/home/colin/.dotfiles/system/.profile"
+link = "/home/colin/.profile"
+[environment_variables]
+target = "/home/colin/.dotfiles/system/.environment_variables"
+link = "/home/colin/.environment_variables"

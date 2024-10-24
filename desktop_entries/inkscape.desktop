@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Inkscape
+Exec=/home/colin/apps/inkscape.AppImage
+Icon=/home/colin/.local/share/icons/inkscape_icon.png
+Comment=Vector graphics tool
