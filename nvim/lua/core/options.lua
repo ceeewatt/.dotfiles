@@ -7,6 +7,18 @@ vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 -- Enable mouse
 vim.opt.mouse = 'a'
 
+-- Load the corresponding ftplugin file (if there is one for
+--  the detected filetype). Note: I added this originally
+--  to run the make.vim ftplugin for makefiles because
+--  I needed to appropriate tab settings for that filetype.
+vim.cmd("filetype plugin on")
+
+-- When opening a file with the extension .make, explicitly
+--  set the 'filetype' to 'make'. This is only here for the
+--  fringe case where I want to have multiple makefiles in
+--  the same directory.
+vim.cmd("autocmd BufNewFile,BufRead *.make setfiletype make")
+
 --[[
 -- Tab Control
 ]]
