@@ -13,12 +13,6 @@ vim.opt.mouse = 'a'
 --  I needed to appropriate tab settings for that filetype.
 vim.cmd("filetype plugin on")
 
--- When opening a file with the extension .make, explicitly
---  set the 'filetype' to 'make'. This is only here for the
---  fringe case where I want to have multiple makefiles in
---  the same directory.
-vim.cmd("autocmd BufNewFile,BufRead *.make setfiletype make")
-
 --[[
 -- Tab Control
 ]]
