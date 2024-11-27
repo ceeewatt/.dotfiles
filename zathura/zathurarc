@@ -1,0 +1,74 @@
+# This config file was most copied some else's
+#  Everforest-themed rice (https://shorturl.at/h1OgM).
+# See: `man zathurarc` for more details.
+
+# This is added to enable using Zathura as the viewer
+#  for use with latexmk.
+# See: https://shorturl.at/h5n5G
+set filemonitor "signal"
+
+set default-bg "#829181"
+set default-fg "#d3c6aa"
+set font "Caskaydia Cove Nerd Font 10"
+
+# Enable all GUI elements.
+# 'c': command line.
+# 's': statusbar.
+# 'h': horizontal scrollbar.
+# 'v': vertical scrollbar.
+set guioptions "cshv"
+
+# Display file name in statusbar
+set statusbar-bg "#404c51"
+set statusbar-fg "#d3c6aa"
+set statusbar-basename true
+
+set inputbar-bg "#2f383e"
+set inputbar-fg "#d3c6aa"
+
+set index-bg "#2f383e"
+set index-fg "#d3c6aa"
+set index-active-bg "#a7c080"
+set index-active-fg "#2b3339"
+
+set completion-bg "#2f383e"
+set completion-fg "#d3c6aa"
+set completion-group-bg "#2f383e"
+set completion-group-fg "#7fbbb3"
+set completion-highlight-bg "#a7c080"
+set completion-highlight-fg "#2b3339"
+
+set notification-bg "#2f383e"
+set notification-fg "#d3c6aa"
+set notification-error-bg "#e68183"
+set notification-error-fg "#2b3339"
+set notification-warning-bg "#e68183"
+set notification-warning-fg "#2b3339"
+
+set render-loading-bg "#2f383e"
+set render-loading-fg "#d3c6aa"
+
+set highlight-color "#a7c080"
+set highlight-active-color "#7fbbb3"
+set highlight-transparency 0.35
+
+set recolor-lightcolor "#2f383e"
+set recolor-darkcolor "#d3c6aa"
+set recolor-keephue true
+set recolor true
+
+# Selected text is automatically copied to our clipboard.
+# By default, we're notified when we copy text, but I'm
+#  disabling that notification.
+set selection-clipboard clipboard
+set selection-notification false
+
+# In the window title, display $HOME directory portion
+#  of file path with a tilde (~).
+set window-title-home-tilde true
+
+# The gap (in pixels) between each page
+set page-padding 5
+
+# Keymaps
+# map <A-n> set nohlsearch
