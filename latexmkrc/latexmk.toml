@@ -1,0 +1,3 @@
+[latexmk]
+target = "/home/colin/.dotfiles/latexmk/.latexmkrc"
+link = "/home/colin/.latexmkrc"
