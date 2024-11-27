@@ -23,6 +23,9 @@ local on_attach = function(_, _)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
+
+  -- I just copied this from somewhere (don't remember)...
+  -- I don't have telescope so obviously I can't use this.
   --vim.keymap.set("n", "gr", require("telescope").lsp_references, {})
 end
 -- Add additional capabilities supported by nvim-cmp
@@ -33,7 +36,10 @@ require("lspconfig").clangd.setup({
   on_attach = on_attach,
   capabilities = capabilities
 })
-require("lspconfig").lua_ls.setup({})
+require("lspconfig").lua_ls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities
+})
 
 -- Setup nvim-cmp for autocompletion
 local cmp = require("cmp")
@@ -43,6 +49,7 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   view = {
+    -- Disable automatic display of docs
     docs = { auto_open = false }
   },
   mapping = cmp.mapping.preset.insert({
@@ -57,8 +64,9 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
 
-    -- Toggle the documentation window
-    ["K"] = cmp.mapping(function(fallback)
+    -- Toggle the documentation window.
+    -- See: https://shorturl.at/MjVcS
+    ["<C-g>"] = cmp.mapping(function(fallback)
       if cmp.visible_docs() then
         cmp.close_docs()
       elseif cmp.visible() then
