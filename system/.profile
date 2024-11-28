@@ -35,3 +35,6 @@ fi
 if [ -f ~/.cargo/env ]; then
     . ~/.cargo/env
 fi
+
+# Start the sway window manager if running from tty1
+[ "$(tty)" = "/dev/tty1" ] && exec sway

@@ -1,0 +1,3 @@
+[sway]
+target = "/home/colin/.dotfiles/sway/config"
+link = "/home/colin/.config/sway/config"

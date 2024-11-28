@@ -45,3 +45,15 @@ $ ln -s ~/apps/yazi/target/release/yazi ~/.local/bin/yazi
 # Symlink Manifests
 
 Each configuration file in this repo should have a corresponding symlink placed somewhere on the filesystem. I presently have manifest containing a list of each symlink file and it's location on the file system. In the future, I need to make some script for easily adding/removing symlinks from the filesystem.
+
+# Window Manager
+
+Here's some info from someone who has configured their Debian 12 to run Sway: https://shorturl.at/d4fuz.
+
+I'm currently in the process of switching from the default Gnome desktop environment to the Sway tiling window manager. When I launch Sway from the Gnome Display Manager (GDM), I was running into a problem where my `~/.profile` script was not executing. I don't have much of a reason to continue using a display manager - let alone the Gnome Display Manager - so I'm currently not using one at all. I've currently disabled GDM by changing the systemd default target (See: https://shorturl.at/WlsSL). This is done by executing the following command as root: `systemctl set-default multi-user.target`.
+
+To re-enable the display manager, use `systemctl set-default graphical.target`.
+
+For an explanation of systemd targets, see https://shorturl.at/ZYHuK.
+
+I thought this blogpost was pretty helpful in troubleshooting my initial issue with my `.profile` not getting sourced: https://shorturl.at/mM55T.

@@ -1,2 +1,7 @@
 export EDITOR=nvim
 export VISUAL=nvim
+
+# This is supposed to help Firefox better integrate with Sway.
+# I'm not sure if I actually need this or not.
+# See: https://wiki.debian.org/sway
+export MOZ_ENABLE_WAYLAND=1
