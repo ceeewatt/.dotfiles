@@ -1,0 +1,3 @@
+[ssh]
+target = "/home/colin/.dotfiles/ssh/config"
+link = "/home/colin/.ssh/config"
