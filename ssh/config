@@ -1,1 +1,9 @@
+# I saw this setting recommended somewhere while I was trying
+#  to find solutions to issue #3. I don't think I need this.
 AddKeysToAgent=true
+
+# The following declarations (up until the next Host)
+#  apply on to this host.
+Host github.com
+  User git
+  IdentityFile ~/.ssh/github_personal
