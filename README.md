@@ -50,6 +50,8 @@ Each configuration file in this repo should have a corresponding symlink placed 
 
 Here's some info from someone who has configured their Debian 12 to run Sway: https://shorturl.at/d4fuz.
 
+I installed sway from the system package: `apt install sway`. Note that Sway has known issues with the proprietary Nvidia drivers, so keep in mind what hardware your system is using. I've initially gone through setting Sway up on my Dell Optiplex machine which uses an Intel card, so I haven't ran into any potential Nvidia issues.
+
 I'm currently in the process of switching from the default Gnome desktop environment to the Sway tiling window manager. When I launch Sway from the Gnome Display Manager (GDM), I was running into a problem where my `~/.profile` script was not executing. I don't have much of a reason to continue using a display manager - let alone the Gnome Display Manager - so I'm currently not using one at all. I've currently disabled GDM by changing the systemd default target (See: https://shorturl.at/WlsSL). This is done by executing the following command as root: `systemctl set-default multi-user.target`.
 
 To re-enable the display manager, use `systemctl set-default graphical.target`.
@@ -57,3 +59,28 @@ To re-enable the display manager, use `systemctl set-default graphical.target`.
 For an explanation of systemd targets, see https://shorturl.at/ZYHuK.
 
 I thought this blogpost was pretty helpful in troubleshooting my initial issue with my `.profile` not getting sourced: https://shorturl.at/mM55T.
+
+## Addons
+
+The downside of switching from a Desktop Environment (DE), such as Gnome, to a Window Manager (WM), such as Sway, is that you no longer have all the tools you're used to having in a normal desktop. For example, the Sway WM does not provide out of the box support for controlling the volume or configuring network settings - you must find 3rd party tools to do these things or implement them yourself.
+
+The Sway wiki provides a list of [Useful Addons](https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway) that are known to be compatible with Sway.
+
+### Application Launcher
+
+The first addon I installed was an application launcher, called [wofi](https://hg.sr.ht/~scoopta/wofi). I installed it from the system package manager (`apt install wofi`). This tool provides a gui interface for launching programs, such as those that have a *.desktop file associated with them. In my Sway config file, there's a command for establishing the keybinding to launch wofi. Note that this program is no longer actively maintained, so I might need to choose a different one in the future.
+
+### Volume Control
+
+Concepts:
+- Sound Server
+- Name pipe (FIFO) for Inter Process Communication
+- Systemd units
+
+The next addon is for controlling the system volume (or anything that might need a progress bar, such as brightness). [Wob](https://github.com/francma/wob) is a daemon that adjusts the levels of a graphical progress bar when you change its input value. On the github page, there's an example of how to setup/configure this tool (See: [wob/contrib](https://github.com/francma/wob/tree/master/contrib)). The exact example I followed was for controlling the volume using PulseAudio (pamixer).
+
+As I have recently learned, there are various Linux tools for controlling system audio. These are called [Sound Servers](https://wiki.debian.org/Sound?action=show&redirect=CategorySound). By default, my Debian 12 installation used [PipeWire](https://wiki.debian.org/PipeWire), which appears to be a more modern tool), but I decided to instead install [PulseAudio](https://wiki.debian.org/PulseAudio) (`apt install pulseaudio`). I don't think this was necessary at all, and I might in the future use the default PipeWire instead.
+
+Pamixer (`apt install pamixer`) is a command line tool for controlling volume levels for PulseAudio. With PulseAudio and pamixer installed, I could now update my Sway config with the proper commands to adjust audio levels via some keybindings and subsequently control a wob progress bar.
+
+Wob works by integrating with systemd to have background process (daemon) that updates a progress bar when the value of its input changes. In the Sway config, we created a name pipe (FIFO). Whenever we update the volume using pamixer, we read out the current volume level into this named pipe. The wob daemon then uses this new value to update the progress bar.

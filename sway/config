@@ -21,7 +21,9 @@ set $term kitty
 #set $menu fuzzel | xargs swaymsg exec --
 set $menu wofi --show=drun -I -i | xargs swaymsg exec --
 
-# https://github.com/francma/wob/tree/master/contrib
+# Create a named pipe (FIFO) and connect it to the standard output
+#  of wob. This is taken directly from the wob github example.
+# See: https://github.com/francma/wob/tree/master/contrib
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
 exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 
