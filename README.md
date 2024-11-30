@@ -120,6 +120,14 @@ Also note that presently, I have no tool for issuing a notification when a scree
 
 ### Notifications
 
+### Idle/Locking
+
+I'm using [swayidle](https://github.com/swaywm/swayidle) (`apt install swayidle`) and [swaylock](https://github.com/swaywm/swaylock) (`apt install swaylock`) for handling of locking the computer after a period of inactivity. Swayidle is daemon that runs certain commands when idle activity is detected and Swaylock locks the screen, which can then be unlocked once the user password is entered.
+
+In the Sway config, we `exec` a swayidle command that handles the screen locking and turning off after a period of time.
+
+The appearance of Swaylock can be configured and presently, I downloaded a random image to use as the background of the lock screen. I'll want to reconfigure this at some point.
+
 ### TODO
 
 - [ ] Idle configuration
