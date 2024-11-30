@@ -97,16 +97,18 @@ Presently, I'm using sxiv (`apt install sxiv`). This is the best image viewer I'
 
 Note: the tool `xeyes` can be used to tell when a window is using native Wayland or XWayland. When you hover your mouse over a window that uses XWayland, the eyes will move. Otherwise, the eyes don't move when hovering your mouse over a Wayland window.
 
+Note: I tried using the [swayimg](https://github.com/artemsen/swayimg) viewer but the version that comes packaged with Debian 12 is woefully out of date. The project github says that this tool has a "gallery" mode for viewing image thumbnails (which I want), but this feature didn't appear to be present in the version that comes packaged with my distro. So, I didn't bother building it from source and resorted to installing sxiv instead.
+
 ### Auto-mounting of Removable Drives
 
 Presently, I don't have a tool installed for automatically mounting removeable drives. It's relatively painless so do so manually, though, using the `udisksctl` utility. The traditional method of mounting a removeable drive involves the following steps:
 
 1. Plug in device.
-2. Find the block device using `fdisk -l` or `lsblk`. Let's say the disk is named sdb and has a partition we want to mount named sdb1.
+2. Find the block device using `fdisk -l` or `lsblk`. Let's use an example where the disk is named `sdb` and has a partition we want to mount named `sdb1`.
 3. Use the `mount` command to mount the partition to a specified location on the filesystem. Typically, we want removeable drives to be mounted under `/media/<user>/<device name>`. If this directory does not exist, we must first make it before mounting.
 4. When finished with the device, use the `umount` command to unmount it. Now the device can be unplugged.
 
-With the `udisksctl`, we don't have to manually create (and remove) a directory from `/media/<user>/`. To mount a device (e.g.: /dev/sdb1), we invoke `udisksctl mount -b /dev/sdb1', and the utility will automatically mount the device somewhere in `/media/<user>/`. Likewise, to unmount a device, we invoke `udisksctl unmount -b /dev/sdb1', and the device will be unmounted and the mount point directory will be removed.
+With the `udisksctl` command, we don't have to manually create (and remove) a directory from `/media/<user>/`. To mount a device (e.g.: `/dev/sdb1`), we invoke `udisksctl mount -b /dev/sdb1`, and the utility will automatically mount the device somewhere in `/media/<user>/`. Likewise, to unmount a device, we invoke `udisksctl unmount -b /dev/sdb1`, and the device will be unmounted and the mount point directory will be removed.
 
 ### Screenshot
 
@@ -130,7 +132,16 @@ The appearance of Swaylock can be configured and presently, I downloaded a rando
 
 ### TODO
 
-- [ ] Idle configuration
+- [x] Application launcher
+    - Wofi
+- [x] Volume control
+    - Wob
+- [x] Image viewer
+    - sxiv
+- [x] Screenshot
+    - grim + slurp
+- [x] Idle configuration
+    - swayidle + swaylock
 - [ ] Notifications
 - [ ] Tool for setting background
 - [ ] Tool for network configuration
