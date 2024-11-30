@@ -195,6 +195,25 @@ output DP-1 {
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 #
+# Screenshot:
+#
+    # Note: with grim, you can specify which output you want
+    #  to capture. Since I'm only using one monitor for now,
+    #  I don't have to worry about this. I'll need to update
+    #  these commands if I add an extra monitor to my setup.
+
+    # Take a screenshot and copy it to the clipboard
+    bindsym $mod+Print exec grim - | wl-copy
+
+    # Take a screenshot and save it to a file
+    bindsym $mod+Shift+Print exec grim
+
+    # Select a region of the screen and copy it to the clipboard
+    bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy
+
+    # Select a region of the screen and save it to a file
+    bindsym $mod+Shift+p exec grim -g "$(slurp)"
+#
 # Resizing containers:
 #
 mode "resize" {

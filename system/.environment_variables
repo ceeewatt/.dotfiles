@@ -5,3 +5,5 @@ export VISUAL=nvim
 # I'm not sure if I actually need this or not.
 # See: https://wiki.debian.org/sway
 export MOZ_ENABLE_WAYLAND=1
+
+export GRIM_DEFAULT_DIR=$HOME/Pictures/Screenshots

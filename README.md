@@ -60,6 +60,12 @@ For an explanation of systemd targets, see https://shorturl.at/ZYHuK.
 
 I thought this blogpost was pretty helpful in troubleshooting my initial issue with my `.profile` not getting sourced: https://shorturl.at/mM55T.
 
+## Sway Keybindings
+
+Here's a useful tool for visualizing which keybindings are currently used: [i3keys](https://github.com/RasmusLindroth/i3keys).
+
+Additionally, `wev` is a tool for debugging Wayland events (such as keypresses). This is helpful for seeing which keys on the keyboard correspond to which keycodes.
+
 ## Addons
 
 The downside of switching from a Desktop Environment (DE), such as Gnome, to a Window Manager (WM), such as Sway, is that you no longer have all the tools you're used to having in a normal desktop. For example, the Sway WM does not provide out of the box support for controlling the volume or configuring network settings - you must find 3rd party tools to do these things or implement them yourself.
@@ -84,3 +90,41 @@ As I have recently learned, there are various Linux tools for controlling system
 Pamixer (`apt install pamixer`) is a command line tool for controlling volume levels for PulseAudio. With PulseAudio and pamixer installed, I could now update my Sway config with the proper commands to adjust audio levels via some keybindings and subsequently control a wob progress bar.
 
 Wob works by integrating with systemd to have background process (daemon) that updates a progress bar when the value of its input changes. In the Sway config, we created a name pipe (FIFO). Whenever we update the volume using pamixer, we read out the current volume level into this named pipe. The wob daemon then uses this new value to update the progress bar.
+
+### Image Viewer
+
+Presently, I'm using sxiv (`apt install sxiv`). This is the best image viewer I'm found so far, but unfortunately it's only build for X, meaning it requires the use of XWayland. Functionally, I don't think this matters at all, but it would be nice to use a program that works natively in Wayland. There is current a small project I found on Github that claims to port sxiv to Wayland but for now, I'm happy using sxiv + XWayland.
+
+Note: the tool `xeyes` can be used to tell when a window is using native Wayland or XWayland. When you hover your mouse over a window that uses XWayland, the eyes will move. Otherwise, the eyes don't move when hovering your mouse over a Wayland window.
+
+### Auto-mounting of Removable Drives
+
+Presently, I don't have a tool installed for automatically mounting removeable drives. It's relatively painless so do so manually, though, using the `udisksctl` utility. The traditional method of mounting a removeable drive involves the following steps:
+
+1. Plug in device.
+2. Find the block device using `fdisk -l` or `lsblk`. Let's say the disk is named sdb and has a partition we want to mount named sdb1.
+3. Use the `mount` command to mount the partition to a specified location on the filesystem. Typically, we want removeable drives to be mounted under `/media/<user>/<device name>`. If this directory does not exist, we must first make it before mounting.
+4. When finished with the device, use the `umount` command to unmount it. Now the device can be unplugged.
+
+With the `udisksctl`, we don't have to manually create (and remove) a directory from `/media/<user>/`. To mount a device (e.g.: /dev/sdb1), we invoke `udisksctl mount -b /dev/sdb1', and the utility will automatically mount the device somewhere in `/media/<user>/`. Likewise, to unmount a device, we invoke `udisksctl unmount -b /dev/sdb1', and the device will be unmounted and the mount point directory will be removed.
+
+### Screenshot
+
+There's a tool called [grim](https://git.sr.ht/~emersion/grim/) (`apt install grim`) which is designed for capturing screenshots from a Wayland window. Grim can be supplemented with a tool called [slurp](https://github.com/emersion/slurp) (`apt install slurp`), which allows you to select a region of your screen. These two tools can be easily combined to create a dynamic screenshot tool that allows you to either take a picture of your entire screen or a selected region of your screen.
+
+Grim checks for an environment variable named `GRIM_DEFAULT_DIR`, which I presently have set to `~/Pictures/Screenshots`. I have Sway keybindings for both saving screenshots to this directory or for copying screenshots to the clipboard.
+
+Note that presently, I'm only using a single monitor for my setup, which makes using Grim simple. If I decide to add more monitors, I'll need to update the commands I'm using in my Sway config.
+
+Also note that presently, I have no tool for issuing a notification when a screenshot is taken.
+
+### Notifications
+
+### TODO
+
+- [ ] Idle configuration
+- [ ] Notifications
+- [ ] Tool for setting background
+- [ ] Tool for network configuration
+- [ ] Natively-Wayland sxiv-like image viewer
+- [ ] Auto-mount removeable drives
