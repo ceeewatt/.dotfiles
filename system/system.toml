@@ -10,3 +10,6 @@ link = "/home/colin/.profile"
 [environment_variables]
 target = "/home/colin/.dotfiles/system/.environment_variables"
 link = "/home/colin/.environment_variables"
+[readline]
+target = "/home/colin/.dotfiles/system/.inputrc"
+link = "/home/colin/.inputrc"

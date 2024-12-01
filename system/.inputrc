@@ -1,0 +1,22 @@
+# System readline configuration file with a bunch of
+#  useful keybindings. This user inputrc file overrides
+#  the system-wide config file, so we must include it.
+$include /etc/inputrc
+
+# Make autocompletion case-insensitive
+set completion-ignore-case on
+
+# Opt out of default Emacs-style keybindings and
+#  instead use vi-style keybindings.
+set editing-mode vi
+
+$if mode=vi
+
+  set keymap vi-insert
+
+  # This keybinding already works in command mode
+  #  by default. Add this keybinding to insert
+  #  mode as well.
+  Control-l: clear-screen 
+
+$endif
