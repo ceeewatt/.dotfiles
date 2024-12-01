@@ -147,3 +147,4 @@ The appearance of Swaylock can be configured and presently, I downloaded a rando
 - [ ] Tool for network configuration
 - [ ] Natively-Wayland sxiv-like image viewer
 - [ ] Auto-mount removeable drives
+- [ ] Login manager
