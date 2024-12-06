@@ -7,3 +7,5 @@ alias refresh-desktop-entries='update-desktop-database ~/.local/share/applicatio
 alias signout="loginctl terminate-user $(whoami)"
 alias shutdown='sudo shutdown now'
 alias reboot='sudo shutdown -r now'
+
+alias py='python3'

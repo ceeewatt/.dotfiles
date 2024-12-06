@@ -10,6 +10,9 @@ set completion-ignore-case on
 #  instead use vi-style keybindings.
 set editing-mode vi
 
+# Display an indicator showing current vi mode
+set show-mode-in-prompt on
+
 $if mode=vi
 
   set keymap vi-insert
