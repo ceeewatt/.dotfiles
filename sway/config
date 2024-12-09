@@ -78,6 +78,9 @@ exec swayidle -w \
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+# Enable NumLock on startup (default is disabled)
+input * xkb_numlock enabled
+
 ### Key bindings
 #
 # Basics:
