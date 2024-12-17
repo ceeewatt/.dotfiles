@@ -46,6 +46,12 @@ $ ln -s ~/apps/yazi/target/release/yazi ~/.local/bin/yazi
 
 Each configuration file in this repo should have a corresponding symlink placed somewhere on the filesystem. I presently have manifest containing a list of each symlink file and it's location on the file system. In the future, I need to make some script for easily adding/removing symlinks from the filesystem.
 
+# Printer
+
+I'm currently using a Canon PIXMA TS6420a wireless printer. To get this printer working, I installed the Canon drivers from their website and installed them via their provided installation scripts.
+
+To print documents, I've used the `lp` command. You can find more information about command line printing from the CUPS web interface located at [localhost:631](http://localhost:631/).
+
 # Window Manager
 
 Here's some info from someone who has configured their Debian 12 to run Sway: https://shorturl.at/d4fuz.
