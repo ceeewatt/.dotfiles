@@ -154,3 +154,4 @@ The appearance of Swaylock can be configured and presently, I downloaded a rando
 - [ ] Natively-Wayland sxiv-like image viewer
 - [ ] Auto-mount removeable drives
 - [ ] Login manager
+- [ ] Integrate Dropbox
