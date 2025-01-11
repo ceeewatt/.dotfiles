@@ -256,4 +256,8 @@ bar {
     }
 }
 
+# Start dropbox on startup.
+# Must come after the status bar is configured.
+exec dropbox start
+
 include /etc/sway/config.d/*
