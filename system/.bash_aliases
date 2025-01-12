@@ -23,3 +23,6 @@ alias latex-live-preview='latexmk -pdf -pvc'
 #  files. This should leave behind just the *.tex and *.pdf
 #  files.
 alias latex-cleanup='latexmk -c'
+
+# Print the available space on all currently mounted file systems
+alias disk-usage='df -BG'
