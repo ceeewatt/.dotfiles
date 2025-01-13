@@ -15,8 +15,7 @@ MAKEFILE_DIR="${HOME}/dev/ceeemake"
 
 # Return early if we've received an erroneous number of arguments.
 # We expect a single argument, indicating the name of the source file.
-if [ ${#} -ne 1 ]
-then
+if [ ${#} -ne 1 ]; then
   printf "Invalid argument: please supply the name of the C/C++"
   printf " source file as a single argument\n"
   exit 1
@@ -25,8 +24,7 @@ else
 fi
 
 # Return early if the sandbox directory already exists
-if [ -d ${SANDBOX_DIR} ]
-then
+if [ -d ${SANDBOX_DIR} ]; then
   printf "Directory '${SANDBOX_DIR}' already exists!\n"
   exit 1
 else
@@ -44,8 +42,7 @@ printf "\n\n  return 0;\n}\n" >> ${SANDBOX_DIR}/${SOURCE_FILE}
 # Attempt to copy over an existing Makefile
 MAKEFILE_ONE="${MAKEFILE_DIR}/Makefile"
 MAKEFILE_TWO="${MAKEFILE_DIR}/config-template.mk"
-if [ -f ${MAKEFILE_ONE} ] && [ -f ${MAKEFILE_TWO} ]
-then
+if [ -f ${MAKEFILE_ONE} ] && [ -f ${MAKEFILE_TWO} ]; then
   printf "Copying '${MAKEFILE_ONE}' and '${MAKEFILE_TWO}'"
   printf " into '${SANDBOX_DIR}'\n"
   cp ${MAKEFILE_ONE} ${SANDBOX_DIR}
