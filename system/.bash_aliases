@@ -2,6 +2,7 @@ alias ll='ls -lAF'
 alias la='ls -AF'
 alias l='ls -CF'
 alias nvim='/home/colin/apps/nvim/bin/nvim'
+alias bat='batcat'
 
 # Run this when new desktop entries are created
 alias refresh-desktop-entries='update-desktop-database ~/.local/share/applications'
