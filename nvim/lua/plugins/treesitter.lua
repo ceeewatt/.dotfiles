@@ -11,7 +11,7 @@ local spec = {
   -- This function is called after the plugin is loaded
   config = function()
     require("nvim-treesitter.configs").setup({
-      ensure_installed = { "c", "cpp", "lua", "make", "vimdoc", "markdown" },
+      ensure_installed = { "c", "cpp", "lua", "make", "vimdoc", "markdown", "bash" },
       sync_install = false,
       highlight = { enable = true },
       indent = { enable = true }
