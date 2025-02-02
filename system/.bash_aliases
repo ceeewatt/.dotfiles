@@ -3,6 +3,8 @@ alias la='ls -AF'
 alias l='ls -CF'
 alias nvim='/home/colin/apps/nvim/bin/nvim'
 alias bat='batcat'
+alias cal='ncal -bw'
+alias py='python3'
 
 # Run this when new desktop entries are created
 alias refresh-desktop-entries='update-desktop-database ~/.local/share/applications'
@@ -10,8 +12,6 @@ alias refresh-desktop-entries='update-desktop-database ~/.local/share/applicatio
 alias signout="loginctl terminate-user $(whoami)"
 alias shutdown='sudo shutdown now'
 alias reboot='sudo shutdown -r now'
-
-alias py='python3'
 
 # Use latexmk to preview a tex document automatically as
 #  it's being edited.

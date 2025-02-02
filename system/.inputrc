@@ -20,6 +20,6 @@ $if mode=vi
   # This keybinding already works in command mode
   #  by default. Add this keybinding to insert
   #  mode as well.
-  Control-l: clear-screen 
+  Control-l: clear-screen
 
 $endif
