@@ -13,6 +13,11 @@ vim.opt.mouse = 'a'
 --  I needed to appropriate tab settings for that filetype.
 vim.cmd("filetype plugin on")
 
+-- Disable text wrapping and make searching case insentive
+--  by default.
+vim.cmd("set nowrap")
+vim.cmd("set ignorecase")
+
 --[[
 -- Tab Control
 ]]
