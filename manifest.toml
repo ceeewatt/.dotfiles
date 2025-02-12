@@ -1,7 +1,0 @@
-[manifests]
-desktop_entries = "desktop_entries/desktop_entries.toml"
-git = "git/git.toml"
-kitty = "kitty/kitty.toml"
-nvim = "nvim/nvim.toml"
-system = "system/system.toml"
-scripts = "scripts/scripts.toml"

@@ -7,7 +7,7 @@
 ###
 ls_print_manifest()
 {
-  cat "${MANIFEST_FILE}"
+  cat "${MANIFEST_FILE}" | sort
 }
 
 ###

@@ -1,3 +1,0 @@
-[sandbox-setup]
-target = "/home/colin/.dotfiles/scripts/sandbox-setup.sh"
-link = "/home/colin/.local/bin/sandbox-setup.sh"
