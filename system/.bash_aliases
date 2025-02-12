@@ -27,3 +27,5 @@ alias latex-cleanup='latexmk -c'
 
 # Print the available space on all currently mounted file systems
 alias disk-usage='df -BG'
+# Print memory usage in human readable format
+alias memory-usage='free -h'
