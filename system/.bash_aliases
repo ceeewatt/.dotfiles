@@ -1,7 +1,6 @@
 alias ll='ls -lhAF'
 alias la='ls -AF'
 alias l='ls -CF'
-alias nvim='/home/colin/apps/nvim/bin/nvim'
 alias bat='batcat'
 alias cal='ncal -bw'
 alias py='python3'
@@ -29,3 +28,13 @@ alias latex-cleanup='latexmk -c'
 alias disk-usage='df -BG'
 # Print memory usage in human readable format
 alias memory-usage='free -h'
+
+# nvim-private will not use a Shada file, meaning data won't
+#  be saved outside of that nvim session.
+alias nvim='/home/colin/apps/nvim/bin/nvim'
+alias nvim-private='nvim -i NONE'
+
+# img-viewer-private will not write any cache or temporary
+#  files.
+alias img-viewer='sxiv'
+alias img-viewer-private='sxiv -p'
