@@ -1,4 +1,4 @@
-alias ll='ls -lAF'
+alias ll='ls -lhAF'
 alias la='ls -AF'
 alias l='ls -CF'
 alias nvim='/home/colin/apps/nvim/bin/nvim'
