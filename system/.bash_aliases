@@ -5,6 +5,10 @@ alias bat='batcat'
 alias cal='ncal -bw'
 alias py='python3'
 
+alias cp='cp -i'
+alias mv='mv -i'
+alias t='trash-put'
+
 # Run this when new desktop entries are created
 alias refresh-desktop-entries='update-desktop-database ~/.local/share/applications'
 
