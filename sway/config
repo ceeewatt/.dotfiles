@@ -21,19 +21,17 @@ set $term kitty
 #set $menu fuzzel | xargs swaymsg exec --
 set $menu wofi --show=drun -I -i | xargs swaymsg exec --
 
-# Create a named pipe (FIFO) and connect it to the standard output
-#  of wob. This is taken directly from the wob github example.
-# See: https://github.com/francma/wob/tree/master/contrib
-set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
-exec rm -f $WOBSOCK && mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
-
 # Control audio using PulseAudio (pamixer).
 # Increase volume: mod+>
 # Decrease volume: mod+<
 # Mute: mod+m
-bindsym $mod+period exec pamixer -ui 2 && pamixer --get-volume > $WOBSOCK
-bindsym $mod+comma exec pamixer -ud 2 && pamixer --get-volume > $WOBSOCK
-bindsym $mod+m exec pamixer --toggle-mute && ( [ "$(pamixer --get-mute)" = "true" ] && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK
+bindsym $mod+period exec pamixer -ui 5
+bindsym $mod+comma exec pamixer -ud 5
+bindsym $mod+m exec pamixer --toggle-mute
+
+bindsym XF86AudioRaiseVolume exec pamixer -ui 5
+bindsym XF86AudioLowerVolume exec pamixer -ud 5
+bindsym XF86AudioMute exec pamixer --toggle-mute
 
 include /etc/sway/config-vars.d/*
 
@@ -255,6 +253,10 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+#bar {
+#  swaybar_command waybar
+#}
 
 # Start dropbox on startup.
 # Must come after the status bar is configured.
