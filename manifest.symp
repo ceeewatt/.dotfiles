@@ -33,3 +33,5 @@
 [nvim_icon.png] '~/.local/share/icons/nvim_icon.png' -> '~/.dotfiles/desktop_entries/icons/nvim_icon.png'
 [obsidian_icon.png] '~/.local/share/icons/obsidian_icon.png' -> '~/.dotfiles/desktop_entries/icons/obsidian_icon.png'
 [sway] '~/.config/sway/config' -> '~/.dotfiles/sway/config'
+[waybar_config] '~/.config/waybar/config' -> '~/.dotfiles/waybar/config'
+[waybar_style] '~/.config/waybar/style.css' -> '~/.dotfiles/waybar/style.css'
