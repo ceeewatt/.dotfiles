@@ -82,6 +82,8 @@ The Sway wiki provides a list of [Useful Addons](https://github.com/swaywm/sway/
 
 The first addon I installed was an application launcher, called [wofi](https://hg.sr.ht/~scoopta/wofi). I installed it from the system package manager (`apt install wofi`). This tool provides a gui interface for launching programs, such as those that have a *.desktop file associated with them. In my Sway config file, there's a command for establishing the keybinding to launch wofi. Note that this program is no longer actively maintained, so I might need to choose a different one in the future.
 
+I'm currently using the everforest style/theme made by [binEpilo](https://github.com/binEpilo/Hyprland-Everforest).
+
 ### Volume Control
 
 Concepts:

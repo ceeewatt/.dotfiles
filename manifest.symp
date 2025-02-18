@@ -35,3 +35,4 @@
 [sway] '~/.config/sway/config' -> '~/.dotfiles/sway/config'
 [waybar_config] '~/.config/waybar/config' -> '~/.dotfiles/waybar/config'
 [waybar_style] '~/.config/waybar/style.css' -> '~/.dotfiles/waybar/style.css'
+[wofi_style] '~/.config/wofi/style.css' -> '~/.dotfiles/wofi/style.css'
