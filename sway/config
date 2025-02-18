@@ -21,9 +21,35 @@ set $term kitty
 #set $menu fuzzel | xargs swaymsg exec --
 set $menu wofi --show=drun -I -i | xargs swaymsg exec --
 
-# Disable title bars on windows
-default_border none
+### Theme configuration
+# Green "Everforest" colors
+set $accent1 #A7C080
+set $accent2 #425047
+# I'm using this as a placeholder color; if I end up seeing it
+#  anywhere, that's a problem.
+set $red #FF0505
 
+# Disable title bars on windows
+default_border pixel 1
+
+# These configures the color of window borders and title bars. See
+#  man 5 sway. I have no clue what 'focused_inactive' and
+#  'focused_tab_title' are so I've set all their colors to red.
+client.focused            $accent1 $accent1 $red $accent1 $accent1
+client.unfocused          $accent2 $accent2 $red $accent2 $accent2
+client.focused_inactive   $red $red $red $red $red
+client.focused_tab_title  $red $red $red $red $red
+
+# This is a hack to disable title bars on tabbed/stacked layouts.
+# There's no built-in method of disabling the title bar for all
+#  layouts, so a workaround is to set the font size to zero.
+# See: https://www.reddit.com/r/swaywm/comments/l4u7pd/how_to_hide_titlebars_everywhere/
+# See: https://www.reddit.com/r/swaywm/comments/146x2nn/is_there_a_way_to_hide_the_titlebar_without/
+font monospace 0
+titlebar_border_thickness 0
+titlebar_padding 1
+
+### Volume control key bindings
 # Control audio using PulseAudio (pamixer).
 # Increase volume: mod+>
 # Decrease volume: mod+<
