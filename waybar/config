@@ -49,7 +49,7 @@
       // Display data/time and calendar
       "clock",
 
-      // Who the fuck knows b/c noone actually documents their shit
+      // This has basically no documentation :)
       "tray"
     ],
 
@@ -116,7 +116,7 @@
 
     "clock": {
         "timezone": "America/Chicago",
-        "format": "{:%H:%M}",
+        "format": "{:%I:%M}",
         "format-alt": "{:%Y-%m-%d}",
         "tooltip": true,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
