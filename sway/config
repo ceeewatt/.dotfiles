@@ -49,7 +49,7 @@ include /etc/sway/config-vars.d/*
 # This is the small trash monitor my optiplex desktop is using
 output DP-1 {
   resolution 1600x900@60Hz
-  bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+  bg ~/Pictures/wallpaper/japanese_pedestrian_street.png fill
 }
 
 ### Idle configuration
@@ -58,9 +58,9 @@ output DP-1 {
 #  and turn screens back on when resumed.
 # Also, lock the screen before computer goes to sleep.
 exec swayidle -w \
-  timeout 600 'swaylock -f -i ~/Pictures/winter_time_minimal.jpg' \
+  timeout 600 'swaylock -f -i ~/Pictures/wallpaper/winter_time_minimal.jpg' \
   timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-  before-sleep 'swaylock -f -i ~/Pictures/winter_time_minimal.jpg'
+  before-sleep 'swaylock -f -i ~/Pictures/wallpaper/winter_time_minimal.jpg'
 
 ### Input configuration
 #
