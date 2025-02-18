@@ -59,17 +59,6 @@
     "sway/workspaces": {
         "all-outputs": true,
         "format": "{name}",
-        //"format": "{name}: {icon}",
-        //"format-icons": {
-        //    "1": "",
-        //    "2": "",
-        //    "3": "",
-        //    "4": "",
-        //    "5": "",
-        //    "urgent": "",
-        //    "focused": "",
-        //    "default": ""
-        //},
         "disable-scroll": false,
         "disable-click": false,
         "disable-scroll-wraparound": false,
@@ -84,7 +73,7 @@
     "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
-        "format-icons": ["", ""],
+        "format-icons": ["", ""],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
@@ -95,16 +84,16 @@
         "scrolllock": false,
         "format": "{name} {icon}",
         "format-icons": {
-            "locked": "",
-            "unlocked": ""
+            "locked": " ",
+            "unlocked": " "
         }
     },
 
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "󰈉",
+            "deactivated": "󰈈"
         },
         "start-activated": false
     },
@@ -123,40 +112,40 @@
     },
 
     "cpu": {
-        "format": "{usage}% ",
+        "format": "{usage}% ",
         "tooltip": true
     },
 
     "memory": {
-        "format": "{percentage}% "
+        "format": "{percentage}% "
     },
 
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-wifi": "{essid} ({signalStrength}%) 󰖩",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected 󰖪",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
 
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-bluetooth": "{volume}% {icon}󰂯 {format_source}",
+        "format-bluetooth-muted": "󰖁 {icon}󰂯 {format_source}",
+        "format-muted": "󰖁 {format_source}",
+        "format-source": "{volume}% 󰍬",
+        "format-source-muted": "󰍭",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "headphone": "󰋋",
+            "hands-free": "󰋎",
+            "headset": "󰋎",
+            "phone": "󰏲",
+            "portable": "󰏲",
+            "car": "󰄋",
+            "default": ["󰕿", "󰖀", "󰕾"]
         },
         "on-click": "pavucontrol"
     }
