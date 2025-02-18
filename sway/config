@@ -21,6 +21,9 @@ set $term kitty
 #set $menu fuzzel | xargs swaymsg exec --
 set $menu wofi --show=drun -I -i | xargs swaymsg exec --
 
+# Disable title bars on windows
+default_border none
+
 # Control audio using PulseAudio (pamixer).
 # Increase volume: mod+>
 # Decrease volume: mod+<
