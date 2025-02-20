@@ -40,5 +40,5 @@ alias nvim-private='nvim -i NONE'
 
 # img-viewer-private will not write any cache or temporary
 #  files.
-alias img-viewer='sxiv'
-alias img-viewer-private='sxiv -p'
+alias imgv='sxiv'
+alias imgv-private='sxiv -p'
