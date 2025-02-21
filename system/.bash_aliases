@@ -42,3 +42,7 @@ alias nvim-private='nvim -i NONE'
 #  files.
 alias imgv='sxiv'
 alias imgv-private='sxiv -p'
+
+# Clear everything in the .bash_history file and additionally
+#  clear the history that remains in memory with the -c opt.
+alias bash-clear-history='cat /dev/null > ~/.bash_history && history -c'
