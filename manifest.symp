@@ -37,3 +37,6 @@
 [waybar_config] '~/.config/waybar/config' -> '~/.dotfiles/waybar/config'
 [waybar_style] '~/.config/waybar/style.css' -> '~/.dotfiles/waybar/style.css'
 [wofi_style] '~/.config/wofi/style.css' -> '~/.dotfiles/wofi/style.css'
+[symp.sh.bash] '~/.local/share/bash-completion/completions/symp.sh.bash' -> '~/.dotfiles/scripts/symp/symp-completion.bash'
+[gpg-helper.sh] '/usr/local/bin/gpg-helper.sh' -> '~/.dotfiles/vault/gpg-helper.sh'
+[gpg-helper.sh.bash] '~/.local/share/bash-completion/completions/gpg-helper.sh.bash' -> '~/.dotfiles/vault/gpg-helper-completion.sh'

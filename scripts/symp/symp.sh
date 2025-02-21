@@ -34,13 +34,13 @@ else
 fi
 
 . "${HERE}"/color.sh
-. "${HERE}"/symp_config.sh
-. "${HERE}"/symp_notify.sh
-. "${HERE}"/symp_manifest.sh
-. "${HERE}"/symp_add.sh
-. "${HERE}"/symp_rm.sh
-. "${HERE}"/symp_ls.sh
-. "${HERE}"/symp_init.sh
+. "${HERE}"/symp-config.sh
+. "${HERE}"/symp-notify.sh
+. "${HERE}"/symp-manifest.sh
+. "${HERE}"/symp-add.sh
+. "${HERE}"/symp-rm.sh
+. "${HERE}"/symp-ls.sh
+. "${HERE}"/symp-init.sh
 
 # Exit if there's no manifest file found
 manifest_check_file
