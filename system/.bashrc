@@ -59,6 +59,7 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     # print the name of the current git branch in red
+    # Note: for reference on these color codes see https://unix.stackexchange.com/questions/588600/in-this-0330132m-vt100-style-ansi-escape-sequences-what-is-the-01-and-the-m
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\[\e[91m\]$(__git_ps1)\[\e[00m\]\n\$ '
 else
     # print the name of current git branch
@@ -82,7 +83,7 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
+    alias grep='grep --color=auto'
     #alias fgrep='fgrep --color=auto'
     #alias egrep='egrep --color=auto'
 fi
