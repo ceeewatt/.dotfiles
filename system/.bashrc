@@ -110,3 +110,10 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# If fzf is installed, use its keybindings:
+# - <C-r>: search bash history
+# - <C-t>: search for files in working directory and paste selected file path into the command line
+# - <Alt-c>: cd into selected directory
+# Use <C-n> & <C-p> through scroll to next/previous entries
+[ -x $(which fzf) ] && . /usr/share/doc/fzf/examples/key-bindings.bash
