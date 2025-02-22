@@ -35,7 +35,6 @@ alias memory-usage='free -h'
 
 # nvim-private will not use a Shada file, meaning data won't
 #  be saved outside of that nvim session.
-alias nvim='/home/colin/apps/nvim/bin/nvim'
 alias nvim-private='nvim -i NONE'
 
 # img-viewer-private will not write any cache or temporary

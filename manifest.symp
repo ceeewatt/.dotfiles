@@ -40,3 +40,4 @@
 [symp.sh.bash] '~/.local/share/bash-completion/completions/symp.sh.bash' -> '~/.dotfiles/scripts/symp/symp-completion.bash'
 [gpg-helper.sh] '/usr/local/bin/gpg-helper.sh' -> '~/.dotfiles/vault/gpg-helper.sh'
 [gpg-helper.sh.bash] '~/.local/share/bash-completion/completions/gpg-helper.sh.bash' -> '~/.dotfiles/vault/gpg-helper-completion.sh'
+[nvim] '/usr/local/bin/nvim' -> '~/apps/nvim/bin/nvim'
