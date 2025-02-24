@@ -66,6 +66,10 @@ vim.opt.termguicolors = true
 --  with treesitter.
 vim.cmd("syntax off")
 
--- Display whitespace characters with (U+2022)
-vim.opt.list = true
-vim.opt.listchars = "tab:• ,lead:•,trail:•"
+-- Display use a dot for displaying all whitespace characters.
+-- Use a '->' for displaying tabs.
+vim.cmd("set list")
+vim.cmd("set listchars+=space:·")
+vim.cmd("set listchars+=lead:·")
+vim.cmd("set listchars+=trail:·")
+vim.cmd("set listchars+=tab:->")
