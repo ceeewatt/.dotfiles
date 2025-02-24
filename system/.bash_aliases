@@ -33,9 +33,9 @@ alias disk-usage='df -BG'
 # Print memory usage in human readable format
 alias memory-usage='free -h'
 
-# nvim-private will not use a Shada file, meaning data won't
-#  be saved outside of that nvim session.
-alias nvim-private='nvim -i NONE'
+# nvim-private: disable shada file, disable swap file, and use
+#  default config
+alias nvim-private='nvim -u NONE -i NONE -n'
 
 # imgv-private will not write any cache or temporary files
 alias imgv='sxiv'

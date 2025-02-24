@@ -177,3 +177,13 @@ bar {
 To use the keyboard state waybar module, the user must be a member of the `input` group. Run `usermod -aG input <username>` to add your user to the input group, then log out and back in for changes to take effect.
 
 I would like to use the `pulseaudio/slider` module, but this feature wasn't added waybar until [v0.9.23](https://github.com/Alexays/Waybar/releases/tag/0.9.23) and the version available in Debian 12 is v0.9.17. I'll just wait until Debian 13 to use this module I guess. For now, I'm stuck using the plain old `pulseaudio` module.
+
+# TODO
+
+- [ ] Better workflow for cd'ing through filesystem
+    - https://github.com/ajeetdsouza/zoxide
+- [ ] Kitty scrollback buffer for mouseless copying of command output
+    - https://github.com/kovidgoyal/kitty/issues/719
+    - https://github.com/kovidgoyal/kitty/discussions/3786
+- [ ] Clipboard history manager
+    - https://github.com/sentriz/cliphist
