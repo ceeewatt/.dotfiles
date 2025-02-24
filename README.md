@@ -14,7 +14,7 @@ For the changes to take effect, you must log out and back in again. Ensure that 
 
 Install one of the dropbox releases from [here](https://linux.dropboxstatic.com/packages/debian/). Dropbox might require the `python3-gpg` package, in which case it will notify you that this package is missing when you try to install the daemon.
 
-Install the `DroidSansM` nerd font a place it in `~/.local/share/fonts`. Execute `fc-cache -v` to now update the font cache.
+Install the ~~`DroidSansM`~~ nerd font a place it in `~/.local/share/fonts`. Execute `fc-cache -f -v` to now update the font cache. I decided to stop using DroidSansMono font due to an issue with the terminal rendering italic variations of the the font (see issue #18). Instead, I'm currently using the Iosevka font installed from the most recent release [here](https://github.com/ryanoasis/nerd-fonts). Presently, it's installed to ~/.local/share/fonts/IosevkaNerdFont directory.
 
 Now begin installing additional tools/applications. Make a directory called `~/apps` to house all user-specific binaries not installed through the system package manager.
 
