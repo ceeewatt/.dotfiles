@@ -73,3 +73,15 @@ vim.cmd("set listchars+=space:·")
 vim.cmd("set listchars+=lead:·")
 vim.cmd("set listchars+=trail:·")
 vim.cmd("set listchars+=tab:->")
+
+--[[
+-- Autocommands
+--]]
+vim.api.nvim_create_autocmd(
+  "FileType",
+  {
+    desc = "For C/C++ files, change the default commentstring from /**/ to //.",
+    pattern = {"c", "cpp"},
+    command = "setlocal commentstring=//%s"
+  }
+)

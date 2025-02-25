@@ -15,9 +15,6 @@ local spec = {
 
     -- Autopairs for quotes, paranthesis, brackets, etc
     require('mini.pairs').setup()
-
-    -- Toggle comments
-    require('mini.comment').setup()
   end
 }
 
