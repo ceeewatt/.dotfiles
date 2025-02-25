@@ -1,9 +1,20 @@
 export EDITOR=nvim
 export VISUAL=nvim
 
-# This is supposed to help Firefox better integrate with Sway.
-# I'm not sure if I actually need this or not.
+export GRIM_DEFAULT_DIR=$HOME/Pictures/Screenshots
+
+###
+#  Sway environment variables
+###
+
 # See: https://wiki.debian.org/sway
 export MOZ_ENABLE_WAYLAND=1
 
-export GRIM_DEFAULT_DIR=$HOME/Pictures/Screenshots
+# Some applications require this environment variable to be set for
+#  use under sway. This must be exported before starting sway.
+#  See: https://github.com/swaywm/sway/wiki#xdg_current_desktop-environment-variable-is-not-being-set
+# Only set this variable if it's not already set; this is in case
+#  we want to switch between window managers, since most other WMs
+#  set this variable themselves.
+#  See: https://www.reddit.com/r/swaywm/comments/l4e55v/comment/gkpok42/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+export XDG_CURRENT_DESKTOP="${XDG_CURRENT_DESKTOP:-sway}"

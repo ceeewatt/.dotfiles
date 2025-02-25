@@ -273,6 +273,9 @@ bar {
   swaybar_command waybar
 }
 
+# See: https://github.com/swaywm/sway/wiki#systemd-and-dbus-activation-environments
+exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+
 # Start dropbox on startup.
 # Must come after the status bar is configured.
 exec dropbox start

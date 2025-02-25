@@ -38,5 +38,10 @@ fi
 
 # Start the sway window manager if running from tty1
 if [ "$(tty)" = "/dev/tty1" ]; then
+    # Note: certain environment variables must be defined before starting
+    #  sway. Also, if I later migrate to using a login manager, I need
+    #  a different approach to starting sway.
+    # See: https://github.com/swaywm/sway/wiki#setting-environmental-variables
+
     exec sway
 fi
