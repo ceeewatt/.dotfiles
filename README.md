@@ -178,6 +178,10 @@ To use the keyboard state waybar module, the user must be a member of the `input
 
 I would like to use the `pulseaudio/slider` module, but this feature wasn't added waybar until [v0.9.23](https://github.com/Alexays/Waybar/releases/tag/0.9.23) and the version available in Debian 12 is v0.9.17. I'll just wait until Debian 13 to use this module I guess. For now, I'm stuck using the plain old `pulseaudio` module.
 
+# Sway Notification Center
+
+Install the following: `apt install swaync libnotify-bin`. `libnotify-bin` install the command line tool `notify-send`, which allows you to send desktop notifications.
+
 # TODO
 
 - [ ] Better workflow for cd'ing through filesystem

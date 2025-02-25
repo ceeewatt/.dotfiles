@@ -42,3 +42,4 @@
 [gpg-helper.sh.bash] '~/.local/share/bash-completion/completions/gpg-helper.sh.bash' -> '~/.dotfiles/vault/gpg-helper-completion.sh'
 [nvim] '/usr/local/bin/nvim' -> '~/apps/nvim/bin/nvim'
 [nvim_mini] '~/.config/nvim/lua/plugins/mini.lua' -> '~/.dotfiles/nvim/lua/plugins/mini.lua'
+[swaync_daemon] '~/.local/share/dbus-1/services/org.freedesktop.Notifications.service' -> '/usr/share/dbus-1/services/org.erikreider.swaync.service'

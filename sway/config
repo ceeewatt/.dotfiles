@@ -273,6 +273,13 @@ bar {
   swaybar_command waybar
 }
 
+# SwayNotificationCenter notification daemon
+# Guides tell you to start the daemon from here, but I'm instead allowing
+#  systemd to start it. See this example given by the dunst notification
+#  daemon: https://dunst-project.org/faq/#how-to-switch-back-to-notify-osd
+#exec swaync
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
 # See: https://github.com/swaywm/sway/wiki#systemd-and-dbus-activation-environments
 exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
 
