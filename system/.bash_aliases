@@ -35,7 +35,7 @@ alias memory-usage='free -h'
 
 # nvim-private: disable shada file, disable swap file, and use
 #  default config
-alias nvim-private='nvim -u NONE -i NONE -n'
+alias nvim-private="nvim -u ~/.dotfiles/nvim/init_bare.lua -i NONE -n"
 
 # imgv-private will not write any cache or temporary files
 alias imgv='sxiv'
