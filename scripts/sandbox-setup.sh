@@ -4,23 +4,27 @@
 # Supply the script with one positional argument for the source
 #  code file. The script will create a new directory and a skeleton
 #  C/C++ source file. It will also attempt to copy over a generic
-#  Makefile from an existing repository on the filesystem.
-# Usage: ./sandbox-setup.sh main.c
+#  Makefile from an existing repository on the filesystem. A second
+#  argument for the name of the sandbox directory can optionally be
+#  supplied.
+# Example: ./sandbox-setup.sh main.c mysandbox
 
-# Create this directory and use it as our sandbox environment
-SANDBOX_DIR='sandbox'
+# This is the default directory under which the sandbox is created
+SANDBOX_DIR_DEFAULT='sandbox'
 
 # Copy a generic Makefile from this directory into our sandbox
 MAKEFILE_DIR="${HOME}/dev/ceeemake"
 
+# First argument is the source file; second argument is the name of
+#  the sandbox directory to create, and is optional.
+SOURCE_FILE="${1}"
+SANDBOX_DIR="${2:-${SANDBOX_DIR_DEFAULT}}"
+
 # Return early if we've received an erroneous number of arguments.
-# We expect a single argument, indicating the name of the source file.
-if [ ${#} -ne 1 ]; then
-  printf "Invalid argument: please supply the name of the C/C++"
-  printf " source file as a single argument\n"
+if [ "${#}" -lt "1" ]; then
+  printf "Usage: ./sandbox-setup.sh <source> [<directory>]\n"
+  printf "Example: ./sandbox-setup.sh main.c sandbox\n"
   exit 1
-else
-  SOURCE_FILE="${1}"
 fi
 
 # Return early if the sandbox directory already exists
