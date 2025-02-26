@@ -43,3 +43,6 @@
 [nvim] '/usr/local/bin/nvim' -> '~/apps/nvim/bin/nvim'
 [nvim_mini] '~/.config/nvim/lua/plugins/mini.lua' -> '~/.dotfiles/nvim/lua/plugins/mini.lua'
 [swaync_daemon] '~/.local/share/dbus-1/services/org.freedesktop.Notifications.service' -> '/usr/share/dbus-1/services/org.erikreider.swaync.service'
+[notes] '~/notes' -> '~/Dropbox/notes'
+[nvim_obsidian] '~/.config/nvim/lua/plugins/obsidian.lua' -> '~/.dotfiles/nvim/lua/plugins/obsidian.lua'
+[nvim_markdown_ftplugin] '~/.config/nvim/after/ftplugin/markdown.lua' -> '~/.dotfiles/nvim/after/ftplugin/markdown.lua'
