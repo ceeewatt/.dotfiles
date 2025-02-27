@@ -124,3 +124,16 @@ fi
 # - zqi: same as zi except don't cd into the selection
 # - zr: select a directory to remove from the database
 eval "$(zoxide init bash)"
+
+# Invoke the yazi file manager through this function. This will
+#  enable us to change into the directory selected with yazi
+#  when exiting the program.
+function y() {
+    local tmp="$(mktemp --tmpdir=/tmp yazi-cwd.XXXXXX)"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+    fi
+
+    rm -f -- "$tmp"
+}
