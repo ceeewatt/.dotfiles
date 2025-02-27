@@ -39,7 +39,14 @@ rm_remove_symlink()
 
     if [ -L "${link}" ]; then
       rm "${link}"
-      notify_print_status "removed symlink '${link}' to '${target}'"
+
+      # Don't remove the entry if the rm command fails
+      if [ "${?}" -eq "0" ]; then
+        notify_print_status "removed symlink '${link}' to '${target}'"
+      else
+        notify_print_error "failed to remove symlink '${link}' (do you have the proper permissions?)"
+        continue
+      fi
     else
       notify_print_error "symlink '${link}' does not exist"
     fi
