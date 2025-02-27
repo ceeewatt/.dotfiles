@@ -31,9 +31,12 @@ if [ -f ~/.environment_variables ]; then
     . ~/.environment_variables
 fi
 
-# source cargo (Rust package manager) environment variables
+# Update PATH to include the rust utilities.
+# Note: the rustup installer by default tries to update this script
+#  to source the file ~/.cargo/env, which updates the PATH. I'm just
+#  doing it manually here.
 if [ -f ~/.cargo/env ]; then
-    . ~/.cargo/env
+    PATH="$PATH:$HOME/.cargo/bin"
 fi
 
 # Start the sway window manager if running from tty1
