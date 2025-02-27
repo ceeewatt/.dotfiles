@@ -9,6 +9,8 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias t='trash-put'
 
+alias j='jobs'
+
 # Run this when new desktop entries are created
 alias refresh-desktop-entries='update-desktop-database ~/.local/share/applications'
 
