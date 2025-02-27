@@ -48,4 +48,4 @@ alias imgv-private='sxiv -p'
 alias bash-clear-history='cat /dev/null > ~/.bash_history && history -c'
 
 # Use fzf to search through man pages
-alias man-search='man -k . | fzf | awk "{print \$1}" | xargs -r man'
+alias man-search='man -k . | fzf --height 40% | awk "{print \$1}" | xargs -r man'

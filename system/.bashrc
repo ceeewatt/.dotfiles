@@ -117,3 +117,10 @@ fi
 # - <Alt-c>: cd into selected directory
 # Use <C-n> & <C-p> through scroll to next/previous entries
 [ -x $(which fzf) ] && . /usr/share/doc/fzf/examples/key-bindings.bash
+
+# Use zoxide as a replacement for cd
+# - z: behaves just like cd
+# - zi: select a directory from the database to cd into
+# - zqi: same as zi except don't cd into the selection
+# - zr: select a directory to remove from the database
+eval "$(zoxide init bash)"
