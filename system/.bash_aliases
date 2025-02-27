@@ -15,8 +15,8 @@ alias j='jobs'
 alias refresh-desktop-entries='update-desktop-database ~/.local/share/applications'
 
 alias signout="loginctl terminate-user $(whoami)"
-alias shutdown='sudo shutdown now'
-alias reboot='sudo shutdown -r now'
+alias shutdown='systemctl poweroff'
+alias reboot='systemctl reboot'
 
 # Use latexmk to preview a tex document automatically as
 #  it's being edited.
