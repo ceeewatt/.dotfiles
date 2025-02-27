@@ -1,0 +1,14 @@
+# This is meant to perform some function whenever the system shuts down
+# See: https://yapjiahong2003.medium.com/scheduling-pre-shutdown-tasks-with-systemd-92530854335
+# See: https://unix.stackexchange.com/questions/734675/unable-to-run-git-commands-before-shutdown/734710#734710
+
+[Unit]
+Description=Run a script whenever the system is shutdown
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStop=/usr/local/bin/system-shutdown-cleanup.sh
+
+[Install]
+WantedBy=default.target

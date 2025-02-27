@@ -46,3 +46,5 @@
 [nvim_obsidian] '~/.config/nvim/lua/plugins/obsidian.lua' -> '~/.dotfiles/nvim/lua/plugins/obsidian.lua'
 [nvim_markdown_ftplugin] '~/.config/nvim/after/ftplugin/markdown.lua' -> '~/.dotfiles/nvim/after/ftplugin/markdown.lua'
 [nvim] '/usr/local/bin/nvim' -> '~/apps/nvim-linux-x86_64/bin/nvim'
+[system-shutdown-cleanup.sh] '/usr/local/bin/system-shutdown-cleanup.sh' -> '~/.dotfiles/scripts/system_shutdown_cleanup/system-shutdown-cleanup.sh'
+[system-shutdown-cleanup.service] '~/.config/systemd/user/system-shutdown-cleanup.service' -> '~/.dotfiles/scripts/system_shutdown_cleanup/system-shutdown-cleanup.service'
