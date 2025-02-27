@@ -121,7 +121,7 @@ add_create_symlink()
   LN_OUTPUT=$(ln -sv "${TARGET_FILE}" "${LINK_FILE}" 2>&1)
 
   if [ "${?}" -ne "0" ]; then
-    notify_print_error "${LN_OUTPUT}\n"
+    notify_print_error "${LN_OUTPUT}"
     exit 1
   fi
 
