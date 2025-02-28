@@ -24,9 +24,7 @@ local on_attach = function(_, _)
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
 
-  -- I just copied this from somewhere (don't remember)...
-  -- I don't have telescope so obviously I can't use this.
-  --vim.keymap.set("n", "gr", require("telescope").lsp_references, {})
+  vim.keymap.set("n", "gr", require("telescope").lsp_references, {})
 end
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -38,7 +36,33 @@ require("lspconfig").clangd.setup({
 })
 require("lspconfig").lua_ls.setup({
   on_attach = on_attach,
-  capabilities = capabilities
+  capabilities = capabilities,
+
+  -- Taken from: https://github.com/neovim/neovim/issues/21686#issuecomment-1522446128
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using
+        -- (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {
+          'vim',
+          'require'
+        },
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  }
 })
 
 -- Setup nvim-cmp for autocompletion
