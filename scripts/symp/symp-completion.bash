@@ -40,9 +40,9 @@ _symp.sh()
   case ${sympCmd} in
     ("add")
       if [ "${curr}" = "-" ]; then
-        COMPREPLY=("-n")
+        COMPREPLY=( "-n" )
       elif [ "${curr}" = "--" ]; then
-        COMPREPLY=("--update")
+        COMPREPLY=( "--update" )
       else
         COMPREPLY=( $(compgen -o default -- "${curr}") )
       fi
