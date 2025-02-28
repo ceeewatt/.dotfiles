@@ -133,6 +133,26 @@ manifest_remove_entry()
 }
 
 ###
+#  Function: manifest_rename_entry()
+#  Usage: manifest_rename_entry <existing_entry> <new_entry>
+#  Description: Attempt to rename an existing entry, without
+#   touching the target/link. If the provided <existing_entry>,
+#   rename it to <new_entry> and return status code 0. Otherwise,
+#   return status code 1.
+###
+manifest_rename_entry()
+{
+  local existing="${1}"
+  local new="${2}"
+  local search_result="$(manifest_entry_search ${1})"
+
+  if [ -z "${search_result}" ]; then return 1; fi
+
+  sed -i "s/\[${existing}\]/\[${new}\]/" "${MANIFEST_FILE}"
+  return 0
+}
+
+###
 #  Function: manifest_read_next_line()
 #  Usage: manifest_read_next_line
 #  Description: Starting from the first line, read a single entry

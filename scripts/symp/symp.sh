@@ -7,8 +7,10 @@ print_help()
   printf "\n"
   printf "SYNOPSIS\n"
   printf "\tsymp add [-n <entry-name>] <target> <link>\n"
+  printf "\tsymp add --update -n <entry-name> <target> <link>\n"
   printf "\tsymp rm <entry-name>...\n"
   printf "\tsymp ls <entry-name>...\n"
+  printf "\tsymp rename <existing-entry> <new-entry>\n"
   printf "\tsymp init\n"
   printf "\tsymp [-h | --help | help]\n"
   printf "\n"
@@ -16,8 +18,10 @@ print_help()
   printf "\tSymp is a tool for managing symbolic links.\n"
   printf "\tSymbolic links are managed via a plain text manifest file.\n"
   printf "\tThe 'add' command will create a symbolic link and create a corresponding entry in the manifest.\n"
+  printf "\tThe 'add' command can also be used with the --update flag to update a specified entry with a new target/link.\n"
   printf "\tThe 'rm' command will likewise remove one or more symbolic links from the filesystem and the manifest.\n"
   printf "\tThe 'ls' command will print the specified manifest entries or all entries if no additional arguments are supplied.\n"
+  printf "\tThe 'rename' command will replace an existing entry name with the new entry rename, without touching the target/link.\n"
   printf "\tThe 'init' command ensures each entry in the manifest file exists on the filesystem.\n"
   printf "\n"
   printf "\tSymp will look for a manifest file at the location specified in the 'symp_config.sh' script.\n"
@@ -40,6 +44,7 @@ fi
 . "${HERE}"/symp-add.sh
 . "${HERE}"/symp-rm.sh
 . "${HERE}"/symp-ls.sh
+. "${HERE}"/symp-rename.sh
 . "${HERE}"/symp-init.sh
 
 # Exit if there's no manifest file found
@@ -65,6 +70,9 @@ case "${SUBCOMMAND}" in
     ;;
   "init")
     init_manifest
+    ;;
+  "rename")
+    rename_entry "${@}"
     ;;
   "-h" | "--help" | "help")
     print_help

@@ -1,11 +1,14 @@
 ###
 #  Function: add_parse_command_line()
-#  Usage: add_parse_command_line [-n <entry-name>] <target> <link>
+#  Usage:
+#    add_parse_command_line [-n <entry-name>] <target> <link>
+#    add_parse_command_line --update -n <entry-name> <target> <link>
 #  Description: Parse command line arguments for the 'add' command. Places
-#   the target, link, and name of the manifest entry in the followingg variables:
+#   the target, link, name, and update flag in the following variables:
 #   - TARGET_CMDLINE
 #   - LINK_CMDLINE
 #   - NAME_CMDLINE
+#   - UPDATE
 ###
 add_parse_command_line()
 {
@@ -17,18 +20,24 @@ add_parse_command_line()
   #example2_bad="target -n link"
   #example3_bad="target link -n"
 
-  # Getopt will produce an output string of the form: '-n name -- target link'
-  #  if the -n option is provided. If no -n option is provided, the output
-  #  will be of the from: ' -- target link'.
-  GETOPT_OUTPUT=$(getopt n: ${@})
+  # This command accepts two separate options/flags:
+  # -n name: specify the name of the manifest entry to be created
+  # --update: if this is provided along with the -n option, the specified entry
+  #  will be reused for a new target/link
+  GETOPT_OUTPUT=$(getopt --unquoted -o n: --longoptions update -- ${@})
 
   if [ "${?}" -ne "0" ]; then
     notify_print_error "issue parsing command line options"
     exit 1
   fi
 
-  prefix="${GETOPT_OUTPUT% -- *}"
-  suffix="${GETOPT_OUTPUT#* -- }"
+  # Replace this functions positional arguments with the results of getopt
+  # See: https://stackoverflow.com/questions/77186508/explain-use-of-eval-set-args-with-getopt-in-bash
+  eval set -- "${GETOPT_OUTPUT}"
+
+  # Getopt will produce an output string string of the form: '--update -n name -- target link'.
+  # Fetch everything after the '--' to get the target and link arguments.
+  local suffix="${GETOPT_OUTPUT#* -- }"
 
   if [ $(echo "${suffix}" | wc -w) -ne "2" ]; then
     notify_print_error "a target and link file must be provided"
@@ -38,13 +47,28 @@ add_parse_command_line()
     LINK_CMDLINE=$(echo "${suffix}" | awk '{print $2}')
   fi
 
-  # If there are two words in the prefix string, we assume that we have
-  #  a valid name option ("-n name"). Otherwise, we assume no -n option
-  #  was provided and we use a default name.
-  if [ $(echo "${prefix}" | wc -w) -eq "2" ]; then
-    NAME_CMDLINE=$(echo "${prefix}" | awk '{print  $2}')
-  else
-    NAME_CMDLINE=$(basename "${TARGET_CMDLINE}")
+  while true; do
+    case "${1}" in
+      ("--update")
+        UPDATE=true; shift ;;
+      ("-n")
+        NAME_CMDLINE="${2}"; shift; shift ;;
+      ("--")
+        break ;;
+      (*)
+        shift
+    esac
+  done
+
+  # If no entry name was provided, use a default name. If the --update flag
+  #  was provided, exit early with an error if no entry name was provided.
+  if [ -z "${NAME_CMDLINE}" ]; then
+    if [ "${UPDATE}" = "true" ]; then
+      notify_print_error "--update requires an entry name (-n <name>)"
+      exit 1
+    else
+      NAME_CMDLINE=$(basename "${TARGET_CMDLINE}")
+    fi
   fi
 }
 
@@ -73,7 +97,9 @@ add_symlink_to_manifest()
 
 ###
 #  Function: add_create_symlink()
-#  Usage: add_create_symlink [-n <entry-name>] <target> <link>
+#  Usage:
+#    add_create_symlink [-n <entry-name>] <target> <link>
+#    add_create_symlink --update -n <entry-name> <target> <link>
 #  Description: Given the command line arguments for a target and link
 #   file (and optionally a manifest entry name) create a the specified
 #   symlink to the specified target and create a corresponding entry
@@ -82,6 +108,9 @@ add_symlink_to_manifest()
 #   take on the same name as the target file. If no <entry-name> is
 #   provided, the manifest entry will take on the same name as the target
 #   file.
+#   In the second form, if the --update flag is provided (along with an
+#    entry name), the specified entry in the manifest is updated with the
+#    new target and link.
 ###
 add_create_symlink()
 {
@@ -105,6 +134,17 @@ add_create_symlink()
     LINK_FILE="$(realpath ${LINK_CMDLINE})/$(basename ${TARGET_FILE})"
   else
     LINK_FILE="$(realpath $(dirname ${LINK_CMDLINE}))/$(basename ${LINK_CMDLINE})"
+  fi
+
+  # If the update flag is given, remove the specified entry before we
+  #  create the new symlink.
+  if [ "${UPDATE}" = "true" ]; then
+    if [ -z "$(manifest_get_entry_target_and_link ${NAME_CMDLINE})" ]; then
+      notify_print_error "no entry '${entry}' found in manifest"
+      exit 1
+    else
+      rm_remove_symlink "${NAME_CMDLINE}"
+    fi
   fi
 
   # If the user provided a symlink that already exists on the

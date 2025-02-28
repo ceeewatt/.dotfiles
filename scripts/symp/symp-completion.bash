@@ -1,3 +1,5 @@
+## Note: this is by no means a perfect completion script but it gets the job done
+
 ###
 #  Function: symp_manifest_get_entry_names()
 #  Usage: symp_manifest_get_entry_names
@@ -21,21 +23,26 @@ symp_manifest_get_entry_names()
 ###
 _symp.sh()
 {
-  local commands="add rm ls init"
+  local commands="add rm ls rename init"
 
   # The current text typed at the command line
   local curr=${COMP_WORDS[COMP_CWORD]}
+  local prev=${COMP_WORDS[COMP_CWORD-1]}
 
   local sympCmd=${COMP_WORDS[1]}
 
   # symp.sh add [-n <name>] <target> <link>
+  # symp.sh add --update -n <name> <target> <link>
   # symp.sh rm <name...>
   # symp.sh ls <name...>
+  # symp.sh rename <existing_name> <new_name>
   # symp.sh init
   case ${sympCmd} in
     ("add")
       if [ "${curr}" = "-" ]; then
         COMPREPLY=("-n")
+      elif [ "${curr}" = "--" ]; then
+        COMPREPLY=("--update")
       else
         COMPREPLY=( $(compgen -o default -- "${curr}") )
       fi
@@ -45,6 +52,13 @@ _symp.sh()
       ;;
     ("ls")
       COMPREPLY=( $(compgen -W "$(symp_manifest_get_entry_names)" -- "${curr}") )
+      ;;
+    ("rename")
+      if [ "${prev}" = "rename" ]; then
+        COMPREPLY=( $(compgen -W "$(symp_manifest_get_entry_names)" -- "${curr}") )
+      else
+        COMPREPLY=( $(compgen -o default -- "${curr}") )
+      fi
       ;;
     ("init")
       # No completions
