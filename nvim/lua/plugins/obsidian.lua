@@ -68,7 +68,7 @@ local spec = {
         opts = { buffer = true },
       },
       -- Smart action depending on context, either follow link or toggle checkbox.
-      ["<cr>"] = {
+      ["<CR>"] = {
         action = function()
           return require("obsidian").util.smart_action()
         end,

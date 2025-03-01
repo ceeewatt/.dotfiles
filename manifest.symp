@@ -48,3 +48,7 @@
 [system-shutdown-cleanup.sh] '/usr/local/bin/system-shutdown-cleanup.sh' -> '~/.dotfiles/scripts/system_shutdown_cleanup/system-shutdown-cleanup.sh'
 [system-shutdown-cleanup.service] '~/.config/systemd/user/system-shutdown-cleanup.service' -> '~/.dotfiles/scripts/system_shutdown_cleanup/system-shutdown-cleanup.service'
 [gpg-helper.sh.bash] '~/.local/share/bash-completion/completions/gpg-helper.sh.bash' -> '~/.dotfiles/vault/gpg-helper-completion.bash'
+[nvim_which_key] '~/.config/nvim/lua/plugins/which-key.lua' -> '~/.dotfiles/nvim/lua/plugins/which-key.lua'
+[nvim_yazi] '~/.config/nvim/lua/plugins/yazi.lua' -> '~/.dotfiles/nvim/lua/plugins/yazi.lua'
+[yazi] '~/.local/bin/yazi' -> '~/apps/yazi/target/release/yazi'
+[yazi_cli] '~/.local/bin/ya' -> '~/apps/yazi/target/release/ya'

@@ -13,6 +13,8 @@ local spec = {
     require("nvim-treesitter.configs").setup({
       ensure_installed = { "c", "cpp", "lua", "make", "vimdoc", "markdown", "markdown_inline", "bash" },
       sync_install = false,
+      auto_install = false,
+      ignore_install = { },
       highlight = { enable = true },
       indent = { enable = true }
     })

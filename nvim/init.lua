@@ -24,7 +24,13 @@ local on_attach = function(_, _)
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
 
-  vim.keymap.set("n", "gr", require("telescope").lsp_references, {})
+  local tbuiltin = require('telescope.builtin')
+  vim.keymap.set("n", "gtr", tbuiltin.lsp_references, { desc = 'Telescope LSP references' })
+  vim.keymap.set("n", "gtd", tbuiltin.lsp_definitions, { desc = 'Telescope LSP definitions' })
+  vim.keymap.set("n", "gtD", tbuiltin.lsp_type_definitions, { desc = 'Telescope LSP declarations' })
+  vim.keymap.set("n", "gti", tbuiltin.lsp_implementations, { desc = 'Telescope LSP implementations' })
+  vim.keymap.set("n", "gts", tbuiltin.lsp_document_symbols, { desc = 'Telescope LSP symbols' })
+  vim.keymap.set("n", "gtw", tbuiltin.diagnostics, { desc = 'Telescope diagnostics (warnings)' })
 end
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
