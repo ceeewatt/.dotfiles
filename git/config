@@ -2,6 +2,6 @@
 	name = Colin Watson
 	email = 137962378+ceeewatt@users.noreply.github.com
 [core]
-	editor = nvim
+	editor = "nvim -u ~/.dotfiles/nvim/init_bare.lua -i NONE -n"
 [init]
 	defaultBranch = master

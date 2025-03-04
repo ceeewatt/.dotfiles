@@ -1,7 +1,8 @@
-export EDITOR=nvim
-export VISUAL=nvim
+# Use a minimal configuration for one-off uses
+export EDITOR='nvim -u ~/.dotfiles/nvim/init_bare.lua -i NONE -n'
+export VISUAL='nvim -u ~/.dotfiles/nvim/init_bare.lua -i NONE -n'
 
-export GRIM_DEFAULT_DIR=$HOME/Pictures/Screenshots
+export GRIM_DEFAULT_DIR="${HOME}/Pictures/Screenshots"
 
 # For zoxide: pass these options to fzf
 _ZO_FZF_OPTS='--height 40%'
