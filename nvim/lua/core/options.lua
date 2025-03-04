@@ -22,14 +22,11 @@ vim.cmd("set wildignorecase")
 --[[
 -- Tab Control
 ]]
--- Number of visual spaces for <TAB>
-vim.opt.tabstop = 2
-
 -- Number of spaces for <TAB> when editing
-vim.opt.softtabstop = 2
+vim.opt.softtabstop = 4
 
--- Insert 2 spaces for a <TAB>
-vim.opt.shiftwidth = 2
+-- Insert 4 spaces for a <TAB>
+vim.opt.shiftwidth = 4
 
 -- Tabs are spaces
 vim.opt.expandtab = true
@@ -68,11 +65,10 @@ vim.cmd("syntax off")
 
 -- Display use a dot for displaying all whitespace characters.
 -- Use a '->' for displaying tabs.
-vim.cmd("set list")
-vim.cmd("set listchars+=space:·")
-vim.cmd("set listchars+=lead:·")
-vim.cmd("set listchars+=trail:·")
-vim.cmd("set listchars+=tab:->")
+-- vim.cmd("set list")
+-- vim.cmd("set listchars+=space:·")
+-- vim.cmd("set listchars+=lead:·")
+-- vim.cmd("set listchars+=trail:·")
 
 --[[
 -- Autocommands

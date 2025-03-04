@@ -12,9 +12,6 @@ vim.cmd("set number")
 --[[
 -- Tab Control
 ]]
--- Number of visual spaces for <TAB>
-vim.opt.tabstop = 4
-
 -- Number of spaces for <TAB> when editing
 vim.opt.softtabstop = 4
 
