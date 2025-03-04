@@ -12,7 +12,7 @@ require("core/lazy")
 --  order.
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "clangd", "lua_ls" }
+  ensure_installed = { "clangd", "lua_ls", "cmake" }
 })
 
 local on_attach = function(_, _)
@@ -70,6 +70,10 @@ require("lspconfig").lua_ls.setup({
     },
   }
 })
+require("lspconfig").cmake.setup({
+  on_attach = on_attach,
+  capabilities = capabilities
+})
 
 -- Setup nvim-cmp for autocompletion
 local cmp = require("cmp")
@@ -86,8 +90,8 @@ cmp.setup({
     -- True: accept currently selected item.
     -- False: only confirm explicitly selected items.
     ['<CR>'] = cmp.mapping.confirm({ select = false }),
-    ["<C-k>"] = cmp.mapping.select_prev_item(),
-    ["<C-j>"] = cmp.mapping.select_next_item(),
+    ["<C-p>"] = cmp.mapping.select_prev_item(),
+    ["<C-n>"] = cmp.mapping.select_next_item(),
 
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
