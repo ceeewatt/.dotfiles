@@ -32,6 +32,8 @@ local spec = {
             ["<Tab>"] = actions.toggle_selection,
             ["<S-Tab>"] = actions.toggle_selection,
 
+            ["<M-d>"] = actions.delete_buffer,
+
             ["<C-u>"] = actions.preview_scrolling_up,
             ["<C-d>"] = actions.preview_scrolling_down,
 
@@ -59,6 +61,7 @@ local spec = {
             ["<C-q>"] = actions.send_selected_to_qflist,
             ["<C-c>"] = actions.close,
 
+            ["<C-/>"] = actions.which_key,
             ["?"] = actions.which_key
           }
         }
