@@ -12,7 +12,7 @@ require("core/lazy")
 --  order.
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "clangd", "lua_ls", "cmake" }
+  ensure_installed = { "clangd", "lua_ls", "cmake", "jedi_language_server" }
 })
 
 local on_attach = function(_, _)
@@ -71,6 +71,10 @@ require("lspconfig").lua_ls.setup({
   }
 })
 require("lspconfig").cmake.setup({
+  on_attach = on_attach,
+  capabilities = capabilities
+})
+require("lspconfig").jedi_language_server.setup({
   on_attach = on_attach,
   capabilities = capabilities
 })
