@@ -52,3 +52,4 @@
 [nvim_yazi] '~/.config/nvim/lua/plugins/yazi.lua' -> '~/.dotfiles/nvim/lua/plugins/yazi.lua'
 [yazi] '~/.local/bin/yazi' -> '~/apps/yazi/target/release/yazi'
 [yazi_cli] '~/.local/bin/ya' -> '~/apps/yazi/target/release/ya'
+[wofi_config] '~/.config/wofi/config' -> '~/.dotfiles/wofi/config'

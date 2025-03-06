@@ -1,0 +1,4 @@
+# Use <C-n>/<C-p> for scrolling to next/previous selection
+# See: https://todo.sr.ht/~scoopta/wofi/164
+key_up=Control_L-p
+key_down=Control_L-n
