@@ -35,7 +35,7 @@
       "pulseaudio",
 
       // Display information about current network connections
-      "network",
+      //"network",
 
       // Display current cpu utilization
       "cpu",
@@ -44,7 +44,7 @@
       "memory",
 
       // Display state of number lock, caps lock, and scroll lock
-      "keyboard-state",
+      //"keyboard-state",
 
       // Display data/time and calendar
       "clock",
@@ -105,7 +105,7 @@
 
     "clock": {
         "timezone": "America/Chicago",
-        "format": "{:%I:%M}",
+        "format": "{:%a %d %b %I:%M}",
         "format-alt": "{:%Y-%m-%d}",
         "tooltip": true,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
