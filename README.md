@@ -2,192 +2,119 @@
 
 Setup for a fresh installation of Debian 12.
 
-If you set a root password during the Debian installation, you will need to install `sudo` because it isn't installed by default. To do so, change to the root user, install sudo, and add your user account to the sudo group.
+If you set a root password during installation, you will need to install `sudo` as it isn't installed by default. To do so, change to the root user, install sudo, and add your user account to the sudo group.
 
 ```sh
 $ su -
 $ apt install sudo
-$ adduser colin sudo
+$ adduser <user> sudo
 ```
 
-For the changes to take effect, you must log out and back in again. Ensure that you are a member of the sudo group by executing the `groups` command. Now, to execute sudo commands without requiring the root password, you can do so by editing the `/etc/sudoers` file. Edit this file by executing the `sudo visudo` command and place the following line at the end of the file: `colin ALL=(ALL) NOPASSWD:ALL`.
+For the changes to take effect, you must log out and back in again. Ensure that you are a member of the sudo group by checking the output of the `groups` command. To execute sudo commands without requiring the root password, add an entry to the `/etc/sudoers` file. Edit this file by executing the `sudo visudo` command and place the following line at the end of the file: `<user> ALL=(ALL) NOPASSWD:ALL`.
 
-Install one of the dropbox releases from [here](https://linux.dropboxstatic.com/packages/debian/). Dropbox might require the `python3-gpg` package, in which case it will notify you that this package is missing when you try to install the daemon.
+Download and build/install the following to the `~/apps` directory:
+- [Dropbox](https://linux.dropboxstatic.com/packages/debian/)
+    - Installation might require the `python3-gpg` package.
+- [Obsidian](https://obsidian.md/download)
+- [Inkscape](https://inkscape.org/release)
+- [Neovim](https://github.com/neovim/neovim/releases)
+- [Yazi](https://github.com/sxyazi/yazi/releases)
+- [Kitty](https://github.com/kovidgoyal/kitty/releases)
 
-Install the ~~`DroidSansM`~~ nerd font a place it in `~/.local/share/fonts`. Execute `fc-cache -f -v` to now update the font cache. I decided to stop using DroidSansMono font due to an issue with the terminal rendering italic variations of the the font (see issue #18). Instead, I'm currently using the Iosevka font installed from the most recent release [here](https://github.com/ryanoasis/nerd-fonts). Presently, it's installed to ~/.local/share/fonts/IosevkaNerdFont directory. Update: for kitty, I'm using a non-patched Iosevka font (see #20), but waybar is still using a patched Iosevka nerd font.
+Download the following fonts to `~/.local/share/fonts`, and then run `fc-cache -f -v` to update the font cache. See [issue #20](https://github.com/ceeewatt/.dotfiles/issues/20) for more info.
+- [Terminal font: Iosevka - Monospace, Default (Super TTC)](https://github.com/be5invis/Iosevka/releases)
+- [Waybar font: Iosevka Patched Nerd Font (Proportional)](https://github.com/ryanoasis/nerd-fonts/releases)
 
-Now begin installing additional tools/applications. Make a directory called `~/apps` to house all user-specific binaries not installed through the system package manager.
+Add `contrib` and `non-free` components to `/etc/apt/sources.list`. See [SourcesList](https://wiki.debian.org/SourcesList#Example_sources.list):
 
-Install Obsidian. I've been using the AppImage without issue and then use a desktop entry to launch Obsidian from the desktop environment application launcher.
-
-Install Neovim. I've installed the latest stable release from [here](https://github.com/neovim/neovim/blob/master/INSTALL.md). Install it to `~/apps/nvim`.
-
-Neovim doesn't integrate with the system clipboard by default, so a system package must be installed to allow Neovim an interface to the Wayland clipboard, allowing copying/pasting of text to/from Neovim. We can install `wl-clipboard` for this. Heres a list of packages to install for Neovim. Having these installed will help with Neovim healthchecks:
-
-```sh
-sudo apt install wl-clipboard luarocks ripgrep
+```
+deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
+deb http://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
+deb-src http://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
 ```
 
-Install Kitty terminal emulator. The binary provided by the Debian package manager was really out of date when I tried it, so I installed it from [here](https://sw.kovidgoyal.net/kitty/binary/).
+Install the packages listed in the [apt_packages.txt](apt_packages.txt).
 
-**TODO**: install the kitty binary to `~/apps` instead of `~/.local/kitty.app`.
+For waybar, if using the keyboard state module, ensure your user is a member of the `input` group (run `usermod -aG input <username>` and log out / back in).
 
-Install Yazi. I built it from source as described [here](https://yazi-rs.github.io/docs/installation/#build-from-source). The build process requires the Rust toolchain, and installing Rust might make changes to your `.bashrc` and/or `.profile` to ensure that environment variables for the toolchain are defined. If the toolchain is installed at `~/.cargo`, my `.profile` should already be configured to source the necessary shell script, so whatever changes are made the to the shell scripts from the Rust installation *should* be able to be removed. I placed the install directory in `~/apps/yazi`. The build process will require `make` and `gcc`, so make sure these are installed as such: `sudo apt install gcc build-essential`.
+# Symlink Manifest
 
-If it doesn't already exist, create `~/.local/bin` directory. This is where we should place symlinks to user-specific applications. This directory should already be on our `$PATH`. Each binary that we have in our `~/apps` directory should have a corresponding symlink placed in the `~/.local/bin` directory. Here's a list of symlinks this directory should have so far:
-
-```sh
-$ ln -s ~/.local/kitty.app/bin/kitty ~/.local/bin/kitty
-$ ln -s ~/.local/kitty.app/bin/kitten ~/.local/bin/kitten
-$ ln -s ~/apps/yazi/target/release/yazi ~/.local/bin/yazi
-```
-
-# Symlink Manifests
-
-Each configuration file in this repo should have a corresponding symlink placed somewhere on the filesystem. I presently have manifest containing a list of each symlink file and it's location on the file system. In the future, I need to make some script for easily adding/removing symlinks from the filesystem.
+I keep a running list of all user-created symbolic links (mostly useful for keeping my dotfiles under version control) in `manifest.symp`, which I interface with using a custom shell script. See [symp](scripts/symp/symp.md).
 
 # Printer
 
-I'm currently using a Canon PIXMA TS6420a wireless printer. To get this printer working, I installed the Canon drivers from their website and installed them via their provided installation scripts.
-
-To print documents, I've used the `lp` command. You can find more information about command line printing from the CUPS web interface located at [localhost:631](http://localhost:631/).
+Install the [drivers](https://www.usa.canon.com/support/p/pixma-ts6420a) for my Canon PIXMA TS6420a wireless printer. For printing, I've mostly used the [CUPS web interface](http://localhost:631/) and the command line `lp` utility.
 
 # Window Manager
 
-Here's some info from someone who has configured their Debian 12 to run Sway: https://shorturl.at/d4fuz.
+I'm currently using sway, for i3-replacement for Wayland. If, during installation, you install any of the available desktop environments, you'll need to change the systemd default target: `systemctl set-default multi-user.target`. Now, after logging in, the login shell will execute sway (see [.profile](system/.profile)). To switch back to an installed desktop environment, execute the command `systemctl set-default graphical.target` and change the `.profile` script accordingly to avoid starting sway. Note that I'm not currently using a login manager; thus, I'm relying on my login shell to start up sway. If I decide to switch to using a login manager, I'll need to change how sway gets invoked.
 
-I installed sway from the system package: `apt install sway`. Note that Sway has known issues with the proprietary Nvidia drivers, so keep in mind what hardware your system is using. I've initially gone through setting Sway up on my Dell Optiplex machine which uses an Intel card, so I haven't ran into any potential Nvidia issues.
+Note that sway supposedly has known issue with the proprietary Nvidia drivers, so keep that in mind if I switch up my hardware.
 
-I'm currently in the process of switching from the default Gnome desktop environment to the Sway tiling window manager. When I launch Sway from the Gnome Display Manager (GDM), I was running into a problem where my `~/.profile` script was not executing. I don't have much of a reason to continue using a display manager - let alone the Gnome Display Manager - so I'm currently not using one at all. I've currently disabled GDM by changing the systemd default target (See: https://shorturl.at/WlsSL). This is done by executing the following command as root: `systemctl set-default multi-user.target`.
+Here are some of the sway/Wayland compatible desktop tools I use. See other useful addons [here](https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway).
+- waybar: status bar
+- wofi: application launcher
+- swaylock & swayidle: idle timeout and screenlock
+- sway notification center: desktop notification daemon
 
-To re-enable the display manager, use `systemctl set-default graphical.target`.
+Other useful tools:
+- [i3keys](https://github.com/RasmusLindroth/i3keys) for visualizing sway keybindings
+- `wev` for debugging Wayland events (this can be useful for seeing which keys correspond to which keycodes)
+- `xeyes` will tell you when a window is using native Wayland or XWayland
 
-For an explanation of systemd targets, see https://shorturl.at/ZYHuK.
+# Neovim
 
-I thought this blogpost was pretty helpful in troubleshooting my initial issue with my `.profile` not getting sourced: https://shorturl.at/mM55T.
+Plugins:
+- Plugin manager:
+    - https://github.com/folke/lazy.nvim
+- Syntax highlighting:
+    - https://github.com/nvim-treesitter/nvim-treesitter
+- Language server:
+    - https://github.com/neovim/nvim-lspconfig
+    - https://github.com/williamboman/mason.nvim
+    - https://github.com/williamboman/mason-lspconfig.nvim
+- Completion:
+    - https://github.com/hrsh7th/nvim-cmp
+- Picker + Previewer:
+    - https://github.com/nvim-telescope/telescope.nvim
+- Others:
+    - status line: https://github.com/nvim-lualine/lualine.nvim
+    - file explorer: https://github.com/mikavilpas/yazi.nvim
+    - obsidian/markdown integration: https://github.com/epwalsh/obsidian.nvim
+    - keybindings helper: https://github.com/folke/which-key.nvim
 
-## Sway Keybindings
+# Other Tools
 
-Here's a useful tool for visualizing which keybindings are currently used: [i3keys](https://github.com/RasmusLindroth/i3keys).
+- `sxiv`: image viewer
+    - doesn't have native support for Wayland (thus, requires XWayland)
+- `yazi`: file explorer
+- `zathura`: pdf viewer
+- `kitty`: terminal emulator
+- `grim` + `slurp`: screenshots
+- `zoxide`: better `cd`
+- `fzf`: fuzzy finder
 
-Additionally, `wev` is a tool for debugging Wayland events (such as keypresses). This is helpful for seeing which keys on the keyboard correspond to which keycodes.
+# Theme
 
-## Addons
-
-The downside of switching from a Desktop Environment (DE), such as Gnome, to a Window Manager (WM), such as Sway, is that you no longer have all the tools you're used to having in a normal desktop. For example, the Sway WM does not provide out of the box support for controlling the volume or configuring network settings - you must find 3rd party tools to do these things or implement them yourself.
-
-The Sway wiki provides a list of [Useful Addons](https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway) that are known to be compatible with Sway.
-
-### Application Launcher
-
-The first addon I installed was an application launcher, called [wofi](https://hg.sr.ht/~scoopta/wofi). I installed it from the system package manager (`apt install wofi`). This tool provides a gui interface for launching programs, such as those that have a *.desktop file associated with them. In my Sway config file, there's a command for establishing the keybinding to launch wofi. Note that this program is no longer actively maintained, so I might need to choose a different one in the future.
-
-I'm currently using the everforest style/theme made by [binEpilo](https://github.com/binEpilo/Hyprland-Everforest).
-
-### Volume Control
-
-Concepts:
-- Sound Server
-- Name pipe (FIFO) for Inter Process Communication
-- Systemd units
-
-The next addon is for controlling the system volume (or anything that might need a progress bar, such as brightness). [Wob](https://github.com/francma/wob) is a daemon that adjusts the levels of a graphical progress bar when you change its input value. On the github page, there's an example of how to setup/configure this tool (See: [wob/contrib](https://github.com/francma/wob/tree/master/contrib)). The exact example I followed was for controlling the volume using PulseAudio (pamixer).
-
-As I have recently learned, there are various Linux tools for controlling system audio. These are called [Sound Servers](https://wiki.debian.org/Sound?action=show&redirect=CategorySound). By default, my Debian 12 installation used [PipeWire](https://wiki.debian.org/PipeWire), which appears to be a more modern tool), but I decided to instead install [PulseAudio](https://wiki.debian.org/PulseAudio) (`apt install pulseaudio`). I don't think this was necessary at all, and I might in the future use the default PipeWire instead.
-
-Pamixer (`apt install pamixer`) is a command line tool for controlling volume levels for PulseAudio. With PulseAudio and pamixer installed, I could now update my Sway config with the proper commands to adjust audio levels via some keybindings and subsequently control a wob progress bar.
-
-Wob works by integrating with systemd to have background process (daemon) that updates a progress bar when the value of its input changes. In the Sway config, we created a name pipe (FIFO). Whenever we update the volume using pamixer, we read out the current volume level into this named pipe. The wob daemon then uses this new value to update the progress bar.
-
-### Image Viewer
-
-Presently, I'm using sxiv (`apt install sxiv`). This is the best image viewer I'm found so far, but unfortunately it's only build for X, meaning it requires the use of XWayland. Functionally, I don't think this matters at all, but it would be nice to use a program that works natively in Wayland. There is current a small project I found on Github that claims to port sxiv to Wayland but for now, I'm happy using sxiv + XWayland.
-
-Note: the tool `xeyes` can be used to tell when a window is using native Wayland or XWayland. When you hover your mouse over a window that uses XWayland, the eyes will move. Otherwise, the eyes don't move when hovering your mouse over a Wayland window.
-
-Note: I tried using the [swayimg](https://github.com/artemsen/swayimg) viewer but the version that comes packaged with Debian 12 is woefully out of date. The project github says that this tool has a "gallery" mode for viewing image thumbnails (which I want), but this feature didn't appear to be present in the version that comes packaged with my distro. So, I didn't bother building it from source and resorted to installing sxiv instead.
-
-### Auto-mounting of Removable Drives
-
-Presently, I don't have a tool installed for automatically mounting removeable drives. It's relatively painless so do so manually, though, using the `udisksctl` utility. The traditional method of mounting a removeable drive involves the following steps:
-
-1. Plug in device.
-2. Find the block device using `fdisk -l` or `lsblk`. Let's use an example where the disk is named `sdb` and has a partition we want to mount named `sdb1`.
-3. Use the `mount` command to mount the partition to a specified location on the filesystem. Typically, we want removeable drives to be mounted under `/media/<user>/<device name>`. If this directory does not exist, we must first make it before mounting.
-4. When finished with the device, use the `umount` command to unmount it. Now the device can be unplugged.
-
-With the `udisksctl` command, we don't have to manually create (and remove) a directory from `/media/<user>/`. To mount a device (e.g.: `/dev/sdb1`), we invoke `udisksctl mount -b /dev/sdb1`, and the utility will automatically mount the device somewhere in `/media/<user>/`. Likewise, to unmount a device, we invoke `udisksctl unmount -b /dev/sdb1`, and the device will be unmounted and the mount point directory will be removed.
-
-### Screenshot
-
-There's a tool called [grim](https://git.sr.ht/~emersion/grim/) (`apt install grim`) which is designed for capturing screenshots from a Wayland window. Grim can be supplemented with a tool called [slurp](https://github.com/emersion/slurp) (`apt install slurp`), which allows you to select a region of your screen. These two tools can be easily combined to create a dynamic screenshot tool that allows you to either take a picture of your entire screen or a selected region of your screen.
-
-Grim checks for an environment variable named `GRIM_DEFAULT_DIR`, which I presently have set to `~/Pictures/Screenshots`. I have Sway keybindings for both saving screenshots to this directory or for copying screenshots to the clipboard.
-
-Note that presently, I'm only using a single monitor for my setup, which makes using Grim simple. If I decide to add more monitors, I'll need to update the commands I'm using in my Sway config.
-
-Also note that presently, I have no tool for issuing a notification when a screenshot is taken.
-
-### Notifications
-
-### Idle/Locking
-
-I'm using [swayidle](https://github.com/swaywm/swayidle) (`apt install swayidle`) and [swaylock](https://github.com/swaywm/swaylock) (`apt install swaylock`) for handling of locking the computer after a period of inactivity. Swayidle is daemon that runs certain commands when idle activity is detected and Swaylock locks the screen, which can then be unlocked once the user password is entered.
-
-In the Sway config, we `exec` a swayidle command that handles the screen locking and turning off after a period of time.
-
-The appearance of Swaylock can be configured and presently, I downloaded a random image to use as the background of the lock screen. I'll want to reconfigure this at some point.
-
-### TODO
-
-- [x] Application launcher
-    - Wofi
-- [x] Volume control
-    - Wob
-- [x] Image viewer
-    - sxiv
-- [x] Screenshot
-    - grim + slurp
-- [x] Idle configuration
-    - swayidle + swaylock
-- [ ] Notifications
-- [ ] Tool for setting background
-- [ ] Tool for network configuration
-- [ ] Natively-Wayland sxiv-like image viewer
-- [ ] Auto-mount removeable drives
-- [ ] Login manager
-- [ ] Integrate Dropbox
-
-# Waybar
-
-https://www.lorenzobettini.it/2024/12/sway-and-waybar/
-
-```
-apt install waybar fonts-font-awesome
-```
-
-To integrate with sway, add this to the config:
-
-```
-bar {
-    swaybar_command waybar
-}
-```
-
-To use the keyboard state waybar module, the user must be a member of the `input` group. Run `usermod -aG input <username>` to add your user to the input group, then log out and back in for changes to take effect.
-
-I would like to use the `pulseaudio/slider` module, but this feature wasn't added waybar until [v0.9.23](https://github.com/Alexays/Waybar/releases/tag/0.9.23) and the version available in Debian 12 is v0.9.17. I'll just wait until Debian 13 to use this module I guess. For now, I'm stuck using the plain old `pulseaudio` module.
-
-# Sway Notification Center
-
-Install the following: `apt install swaync libnotify-bin`. `libnotify-bin` install the command line tool `notify-send`, which allows you to send desktop notifications.
+- Everforest palette: https://github.com/sainnhe/everforest/blob/master/palette.md
+- Desktop background: https://github.com/Apeiros-46B/everforest-walls/blob/main/other/japanese_pedestrian_street.png
+- Firefox theme: https://addons.mozilla.org/en-US/firefox/addon/everforest-dark-medium-theme/
+- Neovim theme: https://github.com/neanias/everforest-nvim
 
 # TODO
 
-- [ ] Better workflow for cd'ing through filesystem
-    - https://github.com/ajeetdsouza/zoxide
-- [ ] Kitty scrollback buffer for mouseless copying of command output
-    - https://github.com/kovidgoyal/kitty/issues/719
-    - https://github.com/kovidgoyal/kitty/discussions/3786
+- [ ] Auto-mountwng of removeable drives
+    - `udisksctl` works well enough for now
+- [ ] Waybar better audio control / slider
+    - I'm waiting for Debian waybar package version [v0.9.23+](https://github.com/Alexays/Waybar/releases/tag/0.9.23) b/c I want the `pulseaudio/slider` module
+- [ ] Login manager
+- [ ] Systemd suspend, hibernate, etc integration
+- [ ] Better network configuration tool
 - [ ] Clipboard history manager
     - https://github.com/sentriz/cliphist
+- [ ] Kitty scrollback buffer
+    - https://github.com/kovidgoyal/kitty/issues/719
+    - https://github.com/kovidgoyal/kitty/discussions/3786
