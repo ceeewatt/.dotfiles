@@ -40,8 +40,8 @@ fi
 printf "Creating file '${SOURCE_FILE}'\n"
 touch ${SANDBOX_DIR}/${SOURCE_FILE}
 printf "\n\nint main(int argc, char* argv[])\n{" >> ${SANDBOX_DIR}/${SOURCE_FILE}
-printf "\n  (void)argc; (void)argv;" >> ${SANDBOX_DIR}/${SOURCE_FILE}
-printf "\n\n  return 0;\n}\n" >> ${SANDBOX_DIR}/${SOURCE_FILE}
+printf "\n    (void)argc; (void)argv;" >> ${SANDBOX_DIR}/${SOURCE_FILE}
+printf "\n\n    return 0;\n}\n" >> ${SANDBOX_DIR}/${SOURCE_FILE}
 
 # Attempt to copy over an existing Makefile
 MAKEFILE_ONE="${MAKEFILE_DIR}/Makefile"
