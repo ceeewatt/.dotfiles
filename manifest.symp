@@ -55,3 +55,4 @@
 [wofi_config] '~/.config/wofi/config' -> '~/.dotfiles/wofi/config'
 [inkscape] '/usr/local/bin/inkscape' -> '~/apps/inkscape.AppImage'
 [obsidian] '/usr/local/bin/obsidian' -> '~/apps/obsidian.AppImage'
+[sandbox-setup-cmake.sh] '~/.local/bin/sandbox-setup-cmake.sh' -> '~/.dotfiles/scripts/sandbox-setup-cmake.sh'
