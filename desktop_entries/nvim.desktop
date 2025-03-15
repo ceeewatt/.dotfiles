@@ -1,7 +1,6 @@
 [Desktop Entry]
 Type=Application
 Name=Neovim
-Exec=/home/colin/apps/nvim/bin/nvim %F
-Icon=/home/colin/.local/share/icons/nvim_icon.png
+Exec=kitty nvim %F
+Icon=nvim_icon.png
 Comment=Neovim text editor
-Terminal=true

@@ -7,5 +7,5 @@ Comment=Fast, feature-rich, GPU based terminal
 TryExec=kitty
 StartupNotify=true
 Exec=kitty
-Icon=/home/colin/.local/share/icons/kitty_icon.png
+Icon=kitty_icon.png
 Categories=System;TerminalEmulator;

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Obsidian
-Exec=/home/colin/apps/obsidian.AppImage
-Icon=/home/colin/.local/share/icons/obsidian_icon.png
+Exec=obsidian
+Icon=obsidian_icon.png
 Comment=Note taking app
 MimeType=x-scheme-handler/obsidian;text/html;

@@ -53,3 +53,5 @@
 [yazi] '~/.local/bin/yazi' -> '~/apps/yazi/target/release/yazi'
 [yazi_cli] '~/.local/bin/ya' -> '~/apps/yazi/target/release/ya'
 [wofi_config] '~/.config/wofi/config' -> '~/.dotfiles/wofi/config'
+[inkscape] '/usr/local/bin/inkscape' -> '~/apps/inkscape.AppImage'
+[obsidian] '/usr/local/bin/obsidian' -> '~/apps/obsidian.AppImage'
