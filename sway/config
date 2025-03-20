@@ -81,14 +81,18 @@ output DP-1 {
 }
 
 ### Idle configuration
-# Lock the screen after 600 seconds (10 minutes) of inactivity.
-# Then, turn off displays after another 300 seconds (5 minutes)
-#  and turn screens back on when resumed.
-# Also, lock the screen before computer goes to sleep.
+# Lock the screen after 15 minutes of inactivity; issue a notification 30
+#  seconds before locking. After a further 2 minutes of inactivity turn off
+#  the displays. Suspend the machine if there's no activity for a full 30 minutes.
+# The before-sleep event is meant to ensure our wayland session is locked for any
+#  any systemd sleep command.
 exec swayidle -w \
-  timeout 600 'swaylock -f -i ~/Pictures/wallpaper/winter_time_minimal.jpg' \
-  timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-  before-sleep 'swaylock -f -i ~/Pictures/wallpaper/winter_time_minimal.jpg'
+  timeout 870 'notify-send "Screen will lock in 30 seconds"' \
+  timeout 900 'playerctl --all-players pause' \
+  timeout 900 'swaylock -e -f -i ~/Pictures/wallpaper/winter_time_minimal.jpg' \
+  timeout 1020 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+  timeout 1800 'systemctl suspend' \
+  before-sleep 'swaylock -f -c 000000'
 
 ### Input configuration
 #
