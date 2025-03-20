@@ -70,6 +70,8 @@ local spec = {
 
     -- Search for files under cwd (respects .gitignore)
     vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+    -- Search for files in notes directory
+    vim.keymap.set('n', '<leader>fn', function() builtin.find_files({cwd = "~/notes/markdown", follow = true}) end, { desc = 'Telescope find notes' })
     -- Search for a string in the file under cwd (respects .gitignore)
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
     -- Search open buffers, open selected buffer on <return>
