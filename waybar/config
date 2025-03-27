@@ -24,7 +24,8 @@
     ],
 
     "modules-center": [
-      "sway/window"
+      // Display data/time and calendar
+      "clock"
     ],
 
     "modules-right": [
@@ -45,9 +46,6 @@
 
       // Display state of number lock, caps lock, and scroll lock
       //"keyboard-state",
-
-      // Display data/time and calendar
-      "clock",
 
       // This has basically no documentation :)
       "tray"

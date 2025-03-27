@@ -25,28 +25,17 @@ set $menu wofi --show=drun -I -i | xargs swaymsg exec --
 # Green "Everforest" colors
 set $accent1 #A7C080
 set $accent2 #425047
-# I'm using this as a placeholder color; if I end up seeing it
-#  anywhere, that's a problem.
-set $red #FF0505
+set $text #1E2326
 
-# Disable title bars on windows
-default_border pixel 1
+default_border normal 1
+font monospace 9
 
 # This configures the color of window borders and title bars. See
 #  man 5 sway.
-client.focused            $accent1 $accent1 $red $accent1 $accent1
-client.unfocused          $accent2 $accent2 $red $accent2 $accent2
-client.focused_inactive   $accent2 $accent2 $red $accent2 $accent2
-client.focused_tab_title  $accent2 $accent2 $red $accent2 $accent2
-
-# This is a hack to disable title bars on tabbed/stacked layouts.
-# There's no built-in method of disabling the title bar for all
-#  layouts, so a workaround is to set the font size to zero.
-# See: https://www.reddit.com/r/swaywm/comments/l4u7pd/how_to_hide_titlebars_everywhere/
-# See: https://www.reddit.com/r/swaywm/comments/146x2nn/is_there_a_way_to_hide_the_titlebar_without/
-font monospace 0
-titlebar_border_thickness 0
-titlebar_padding 1
+client.focused            $accent1 $accent1 $text $accent1 $accent1
+client.unfocused          $accent2 $accent2 $text $accent2 $accent2
+client.focused_inactive   $accent2 $accent2 $text $accent2 $accent2
+client.focused_tab_title  $accent2 $accent2 $text $accent2 $accent2
 
 ### Volume control key bindings
 # Control audio using PulseAudio (pamixer).
