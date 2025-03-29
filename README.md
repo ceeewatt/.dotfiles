@@ -118,3 +118,8 @@ Plugins:
 - [ ] Kitty scrollback buffer
     - https://github.com/kovidgoyal/kitty/issues/719
     - https://github.com/kovidgoyal/kitty/discussions/3786
+- [ ] CLI bookmark manager
+    - [nb](https://github.com/xwmx/nb)
+    - [linkhut](https://linkhut.org/about/)
+- [ ] RSS feed reader
+    - [newsboat](https://github.com/newsboat/newsboat)

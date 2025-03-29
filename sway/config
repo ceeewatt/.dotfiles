@@ -78,7 +78,7 @@ output DP-1 {
 exec swayidle -w \
   timeout 870 'notify-send "Screen will lock in 30 seconds"' \
   timeout 900 'playerctl --all-players pause' \
-  timeout 900 'swaylock -e -f -i ~/Pictures/wallpaper/winter_time_minimal.jpg' \
+  timeout 900 'swaylock -e -f -i ~/Pictures/wallpaper/darkness_devil.jpeg' \
   timeout 1020 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
   timeout 1800 'systemctl suspend' \
   before-sleep 'swaylock -f -c 000000'
