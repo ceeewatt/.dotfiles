@@ -20,10 +20,13 @@ Download and build/install the following to the `~/apps` directory:
 - [Neovim](https://github.com/neovim/neovim/releases)
 - [Yazi](https://github.com/sxyazi/yazi/releases)
 - [Kitty](https://github.com/kovidgoyal/kitty/releases)
+- [Tofi](https://github.com/philj56/tofi)
+    - newly added in trixie repositories
 
 Download the following fonts to `~/.local/share/fonts`, and then run `fc-cache -f -v` to update the font cache. See [issue #20](https://github.com/ceeewatt/.dotfiles/issues/20) for more info.
 - [Terminal font: Iosevka - Monospace, Default (Super TTC)](https://github.com/be5invis/Iosevka/releases)
 - [Waybar font: Iosevka Patched Nerd Font (Proportional)](https://github.com/ryanoasis/nerd-fonts/releases)
+- Tofi font: Cousine
 
 Add `contrib` and `non-free` components to `/etc/apt/sources.list`. See [SourcesList](https://wiki.debian.org/SourcesList#Example_sources.list):
 
@@ -56,7 +59,8 @@ Note that sway supposedly has known issue with the proprietary Nvidia drivers, s
 
 Here are some of the sway/Wayland compatible desktop tools I use. See other useful addons [here](https://github.com/swaywm/sway/wiki/Useful-add-ons-for-sway).
 - waybar: status bar
-- wofi: application launcher
+- ~~wofi~~: application launcher
+    - replaced with tofi
 - swaylock & swayidle: idle timeout and screenlock
 - sway notification center: desktop notification daemon
 

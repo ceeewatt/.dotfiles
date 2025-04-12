@@ -1,0 +1,29 @@
+anchor = bottom
+width = 100%
+height = 35
+horizontal = true
+outline-width = 0
+border-width = 0
+min-input-width = 120
+result-spacing = 20
+padding-top = 8
+padding-bottom = 8
+padding-left = 8
+padding-right = 8
+clip-to-padding = false
+text-cursor = true
+ascii-input = true
+terminal = kitty
+
+prompt-text = "drun:"
+prompt-padding = 10
+font = "~/.local/share/fonts/Cousine/CousineNerdFont-Bold.ttf"
+font-size = 14
+
+background-color = #2B3339
+text-color = #D3C6AA
+input-color = #A7C080
+prompt-color = #D3C6AA80
+selection-color = #2B3339
+selection-background = #A7C080
+selection-background-padding = 2
