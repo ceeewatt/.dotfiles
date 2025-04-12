@@ -56,3 +56,5 @@
 [inkscape] '/usr/local/bin/inkscape' -> '~/apps/inkscape.AppImage'
 [obsidian] '/usr/local/bin/obsidian' -> '~/apps/obsidian.AppImage'
 [sandbox-setup-cmake.sh] '~/.local/bin/sandbox-setup-cmake.sh' -> '~/.dotfiles/scripts/sandbox-setup-cmake.sh'
+[nvm] '~/.local/bin/nvm' -> '~/.dotfiles/scripts/nvm-wrapper.sh'
+[nvm_completion] '~/.local/share/bash-completion/completions/nvm.bash' -> '~/.nvm/bash_completion'
