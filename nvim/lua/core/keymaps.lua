@@ -3,3 +3,5 @@
 --  to be '\\'.
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+
+vim.keymap.set("t", "<ESC>", "<C-\\><C-n>", { desc = "Leave terminal mode" })

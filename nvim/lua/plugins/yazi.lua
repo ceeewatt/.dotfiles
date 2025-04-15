@@ -1,5 +1,6 @@
 local spec = {
   "mikavilpas/yazi.nvim",
+  enabled = false,
   event = "VeryLazy",
   dependencies = { "folke/snacks.nvim", lazy = true },
   keys = {

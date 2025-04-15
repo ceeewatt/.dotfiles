@@ -87,7 +87,7 @@ Plugins:
     - https://github.com/nvim-telescope/telescope.nvim
 - Others:
     - status line: https://github.com/nvim-lualine/lualine.nvim
-    - file explorer: https://github.com/mikavilpas/yazi.nvim
+    - file explorer: https://github.com/stevearc/oil.nvim
     - obsidian/markdown integration: https://github.com/epwalsh/obsidian.nvim
     - keybindings helper: https://github.com/folke/which-key.nvim
 

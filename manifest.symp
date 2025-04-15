@@ -59,3 +59,4 @@
 [nvm] '~/.local/bin/nvm' -> '~/.dotfiles/scripts/nvm-wrapper.sh'
 [nvm_completion] '~/.local/share/bash-completion/completions/nvm.bash' -> '~/.nvm/bash_completion'
 [tofi] '~/.config/tofi/config' -> '~/.dotfiles/tofi/config'
+[nvim_oil] '~/.config/nvim/lua/plugins/oil.lua' -> '~/.dotfiles/nvim/lua/plugins/oil.lua'
