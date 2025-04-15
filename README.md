@@ -22,6 +22,7 @@ Download and build/install the following to the `~/apps` directory:
 - [Kitty](https://github.com/kovidgoyal/kitty/releases)
 - [Tofi](https://github.com/philj56/tofi)
     - newly added in trixie repositories
+- [Gomi: trash cli](https://github.com/babarot/gomi)
 
 Download the following fonts to `~/.local/share/fonts`, and then run `fc-cache -f -v` to update the font cache. See [issue #20](https://github.com/ceeewatt/.dotfiles/issues/20) for more info.
 - [Terminal font: Iosevka - Monospace, Default (Super TTC)](https://github.com/be5invis/Iosevka/releases)
