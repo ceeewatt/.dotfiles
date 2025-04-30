@@ -25,14 +25,14 @@ local spec = {
             ["<CR>"] = actions.select_default,
             ["<C-n>"] = actions.move_selection_next,
             ["<C-p>"] = actions.move_selection_previous,
-            ["<C-x>"] = actions.select_horizontal,
+            ["<C-h>"] = actions.select_horizontal,
             ["<C-v>"] = actions.select_vertical,
             ["<C-t>"] = actions.select_tab,
 
             ["<Tab>"] = actions.toggle_selection,
             ["<S-Tab>"] = actions.toggle_selection,
 
-            ["<M-d>"] = actions.delete_buffer,
+            ["<C-x>"] = actions.delete_buffer,
 
             ["<C-u>"] = actions.preview_scrolling_up,
             ["<C-d>"] = actions.preview_scrolling_down,
@@ -47,6 +47,10 @@ local spec = {
             ["<CR>"] = actions.select_default,
             ["<C-n>"] = actions.move_selection_next,
             ["<C-p>"] = actions.move_selection_previous,
+            ["<C-h>"] = actions.select_horizontal,
+            ["<C-v>"] = actions.select_vertical,
+            ["<C-t>"] = actions.select_tab,
+
             ["j"] = actions.move_selection_next,
             ["k"] = actions.move_selection_previous,
             ["gg"] = actions.move_to_top,
@@ -54,6 +58,8 @@ local spec = {
 
             ["<Tab>"] = actions.toggle_selection,
             ["<S-Tab>"] = actions.toggle_selection,
+
+            ["<C-x>"] = actions.delete_buffer,
 
             ["<C-u>"] = actions.preview_scrolling_up,
             ["<C-d>"] = actions.preview_scrolling_down,
